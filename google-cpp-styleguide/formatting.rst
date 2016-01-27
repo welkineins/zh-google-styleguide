@@ -531,7 +531,7 @@
         string name = "Some Name";
         string name{"Some Name"};
 
-請務必小心列表初始化 {...} 用 ``std::initializer_list`` 構造函數初始化出的類型。非空列表初始化就會優先調用 ``std::initializer_list``, 不過空列表初始化除外，後者原則上會調用默認構造函數。為了強制禁用 ``std::initializer_list`` 構造函數，請改用括號。
+請務必小心列表初始化 {...} 用 ``std::initializer_list`` 建構子初始化出的類型。非空列表初始化就會優先調用 ``std::initializer_list``, 不過空列表初始化除外，後者原則上會調用默認建構函數。為了強制禁用 ``std::initializer_list`` 構造函數，請改用括號。
 
     .. code-block:: c++
 
@@ -622,12 +622,12 @@
 
     - 關於聲明順序的規則請參考 :ref:`聲明順序 <declaration-order>` 一節.
 
-8.16. 構造函數初始值列表
+8.16. 建構子初始值列表
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    構造函數初始值列表放在同一行或按四格縮進並排幾行.
+    建構子初始值列表放在同一行或按四格縮進並排幾行.
 
 下面兩種初始值列表方式都可以接受:
 
@@ -791,7 +791,7 @@
 
 #. 對於程式碼格式, 因人, 系統而異各有優缺點, 但同一個專案中遵循同一標準還是有必要的;
 #. 行寬原則上不超過 80 列, 把 22 寸的顯示屏都占完, 怎麼也說不過去;
-#. 盡量不使用非 ASCII 字符, 如果使用的話, 參考 UTF-8 格式 (尤其是 UNIX/Linux 下, Windows 下可以考慮寬字符), 盡量不將字符串常量耦合到程式碼中, 比如獨立出資源文件, 這不僅僅是風格問題了;
+#. 盡量不使用非 ASCII 字符, 如果使用的話, 參考 UTF-8 格式 (尤其是 UNIX/Linux 下, Windows 下可以考慮寬字符), 盡量不將字符串常數耦合到程式碼中, 比如獨立出資源文件, 這不僅僅是風格問題了;
 #. UNIX/Linux 下無條件使用空格, MSVC 的話使用 Tab 也無可厚非;
 #. 函數參數, 邏輯條件, 初始化列表: 要麼所有參數和函數名放在同一行, 要麼所有參數並排分行;
 #. 除函數定義的左大括號可以置於行首外, 包括函數/類/結構體/枚舉聲明, 各種語句的左大括號置於行尾, 所有右大括號獨立成行;
@@ -810,6 +810,6 @@
 #. Google 強調有一對 if-else 時，不論有沒有嵌套，都要有大括號。Apple 正好`有栽過跟頭 <http://coolshell.cn/articles/11112.html>`_.
 #. 其實我主張指針／地址操作符與變數名緊鄰，``int* a, b`` vs ``int *a, b``, 新手會誤以為前者的 ``b`` 是 ``int *`` 變量，但後者就不一樣了，高下立判。
 #. 在這風格指南裡我才剛知道 C++ 原來還有所謂的 `Alternative operator representations <http://en.cppreference.com/w/cpp/language/operator_alternative>`_, 大概沒人用吧。
-#. 注意構造函數初始值列表（Constructer Initializer List）與列表初始化（Initializer List）是兩碼事，我就差點混淆了它們的翻譯。
+#. 注意建構子初始值列表（Constructer Initializer List）與列表初始化（Initializer List）是兩碼事，我就差點混淆了它們的翻譯。
 #. 事實上，如果您熟悉英語本身的書寫規則，就會發現該風格指南在格式上的規定與英語語法相當一脈相承。比如普通標點符號和單詞後面還有文本的話，總會留一個空格；特殊符號與單詞之間就不用留了，比如 ``if (true)`` 中的圓括號與 ``true``.
 #. 本風格指南沒有明確規定 void 函數里要不要用 return 語句，不過就 Google 開源專案 leveldb 並沒有寫；此外從 `Is a blank return statement at the end of a function whos return type is void necessary? <http://stackoverflow.com/questions/9316717/is-a-blank-return-statement-at-the-end-of-a-function-whos-return-type-is-void-ne>`_ 來看，``return;`` 比 ``return ;`` 更約定俗成（事實上 cpplint 會對後者報錯，指出分號前有多餘的空格），且可用來提前跳出函數棧。
