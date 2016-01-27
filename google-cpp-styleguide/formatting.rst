@@ -128,7 +128,7 @@
 
     .. code-block:: c++
 
-        // 接口中形參恆有命名。
+        // 介面中形參恆有命名。
         class Shape {
          public:
           virtual void Rotate(double radians) = 0;
