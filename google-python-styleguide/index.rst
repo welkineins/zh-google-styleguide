@@ -1,5 +1,5 @@
 ================================
-Google Python 风格指南 - 中文版
+Google Python 風格指南 - 中文版
 ================================
 
 :版本: 2.59
@@ -14,22 +14,22 @@ Google Python 风格指南 - 中文版
         Matt Smart
         Mike Shields
 
-:翻译:
+:翻譯:
     .. line-block::
 
         `guoqiao <http://guoqiao.me/>`_ v2.19
         `xuxinkun <https://github.com/xuxinkun>`_ v2.59
 
-:项目主页:
+:項目主頁:
     - `Google Style Guide <https://github.com/google/styleguide>`_
-    - `Google 开源项目风格指南 - 中文版 <http://github.com/zh-google-styleguide/zh-google-styleguide>`_
+    - `Google 開源項目風格指南 - 中文版 <http://github.com/zh-google-styleguide/zh-google-styleguide>`_
 
-目录
+目錄
 ================================
 
 .. toctree::
-        
-        background         
+
+        background
         python_language_rules
         python_style_rules
         parting_words

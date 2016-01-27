@@ -1,43 +1,43 @@
-整体的元数据规则
+整體的元數據規則
 ===================
 
-编码
+編碼
 ---------
 
-使用UTF-8无BOM编码。
+使用UTF-8無BOM編碼。
 
-让你的编辑器使用无字节顺序标记的UTF-8编码。
+讓你的編輯器使用無字節順序標記的UTF-8編碼。
 
-在HTML模板和文档中使用 ``<meta charset=”utf-8”>`` 指定编码。不需要为样式表指定编码，它默认是UTF-8。
+在HTML模板和文檔中使用 ``<meta charset=」utf-8」>`` 指定編碼。不需要為樣式表指定編碼，它默認是UTF-8。
 
-（想了解更多关于应该何时并如何指定编码，请查看 `Handling character encodings in HTML and CSS <http://www.w3.org/International/tutorials/tutorial-char-enc/>`_）
+（想瞭解更多關於應該何時並如何指定編碼，請查看 `Handling character encodings in HTML and CSS <http://www.w3.org/International/tutorials/tutorial-char-enc/>`_）
 
-注释
+註釋
 --------
 
-在需要时尽可能去解释你的代码。
+在需要時盡可能去解釋你的代碼。
 
-用注释去解释你的代码，包括它的应用范围、用途、此方案的选择理由等。
+用註釋去解釋你的代碼，包括它的應用範圍、用途、此方案的選擇理由等。
 
-（这一条是可选的，没必要为每个文件写上详细的注释，会增重HTML/CSS的代码，主要取决于项目的复杂度。）
+（這一條是可選的，沒必要為每個文件寫上詳細的註釋，會增重HTML/CSS的代碼，主要取決於項目的複雜度。）
 
-处理内容
+處理內容
 ----------
 
-用TODO标记待办事宜和处理内容。
+用TODO標記待辦事宜和處理內容。
 
-只用TODO来标记待办事宜，不要使用其他格式，例如@@。
+只用TODO來標記待辦事宜，不要使用其他格式，例如@@。
 
-在括号里添加联系方式（姓名或邮箱），格式为TODO（联系方式）。
+在括號裡添加聯繫方式（姓名或郵箱），格式為TODO（聯繫方式）。
 
-在冒号后面添加处理内容，格式为TODO：处理内容。
+在冒號後面添加處理內容，格式為TODO：處理內容。
 
 .. code-block:: html
 
-  {# TODO(john.doe): 重新处理水平居中 #}
+  {# TODO(john.doe): 重新處理水平居中 #}
   <center>Test</center>
-  
-  <!-- TODO: 移除可选的标签 -->
+
+  <!-- TODO: 移除可選的標籤 -->
   <ul>
    <li>Apples</li>
    <li>Oranges</li>

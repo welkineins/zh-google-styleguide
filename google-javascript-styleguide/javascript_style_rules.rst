@@ -1,58 +1,58 @@
-Javascript格式规则
+Javascript格式規則
 ==================
 
 命名
 --------------
 
-通常来说，使用 ``functionNamesLikeThis`` ， ``variableNamesLikeThis`` ， ``ClassNamesLikeThis`` ， ``EnumNamesLikeThis`` ， ``methodNamesLikeThis`` ， ``CONSTANT_VALUES_LIKE_THIS`` ， ``foo.namespaceNamesLikeThis.bar`` 和 ``filenameslikethis.js`` 这种格式的命名方式。
+通常來說，使用 ``functionNamesLikeThis`` ， ``variableNamesLikeThis`` ， ``ClassNamesLikeThis`` ， ``EnumNamesLikeThis`` ， ``methodNamesLikeThis`` ， ``CONSTANT_VALUES_LIKE_THIS`` ， ``foo.namespaceNamesLikeThis.bar`` 和 ``filenameslikethis.js`` 這種格式的命名方式。
 
-属性和方法
+屬性和方法
 ~~~~~~~~~~~~~~
 
-* *私有* 属性和方法应该以下划线开头命名。
+* *私有* 屬性和方法應該以下劃線開頭命名。
 
-* *保护* 属性和方法应该以无下划线开头命名（像公共属性和方法一样）。
+* *保護* 屬性和方法應該以無下劃線開頭命名（像公共屬性和方法一樣）。
 
-了解更多关于私有成员和保护成员的信息，请阅读 `可见性 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Visibility__private_and_protected_fields_>`_ 部分。
+瞭解更多關於私有成員和保護成員的信息，請閱讀 `可見性 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Visibility__private_and_protected_fields_>`_ 部分。
 
-方法和函数参数
+方法和函數參數
 ~~~~~~~~~~~~~~~~~
 
-可选函数参数以 ``opt_`` 开头。
+可選函數參數以 ``opt_`` 開頭。
 
-参数数目可变的函数应该具有以 ``var_args`` 命名的最后一个参数。你可能不会在代码里引用 ``var_args`` ；使用 ``arguments`` 对象。
+參數數目可變的函數應該具有以 ``var_args`` 命名的最後一個參數。你可能不會在代碼裡引用 ``var_args`` ；使用 ``arguments`` 對象。
 
-可选参数和数目可变的参数也可以在注释 ``@param`` 中指定。尽管这两种惯例都被编译器接受，但更加推荐两者一起使用。
+可選參數和數目可變的參數也可以在註釋 ``@param`` 中指定。儘管這兩種慣例都被編譯器接受，但更加推薦兩者一起使用。
 
 getter和setter
 ~~~~~~~~~~~~~~~~~
 
-EcmaScript 5 不鼓励使用属性的getter和setter。然而，如果使用它们，那么getter就不要改变属性的可见状态。
+EcmaScript 5 不鼓勵使用屬性的getter和setter。然而，如果使用它們，那麼getter就不要改變屬性的可見狀態。
 
 ::
 
     /**
-    *错误--不要这样做.
+    *錯誤--不要這樣做.
     */
     var foo = { get next() { return this.nextId++; } };
     };
 
-存取函数
+存取函數
 ~~~~~~~~
 
-属性的getter和setter方法不是必需的。然而，如果使用它们，那么读取方法必须以 ``getFoo()`` 命名，并且写入方法必须以 ``setFoo(value)`` 命名。（对于布尔型的读取方法，也可以使用 ``isFoo()`` ，并且这样往往听起来更自然。）
+屬性的getter和setter方法不是必需的。然而，如果使用它們，那麼讀取方法必須以 ``getFoo()`` 命名，並且寫入方法必須以 ``setFoo(value)`` 命名。（對於布爾型的讀取方法，也可以使用 ``isFoo()`` ，並且這樣往往聽起來更自然。）
 
-命名空间
+命名空間
 ~~~~~~~~
 
-JavaScript没有原生的对封装和命名空间的支持。
+JavaScript沒有原生的對封裝和命名空間的支持。
 
-全局命名冲突难以调试，并且当两个项目尝试整合的时候可能引起棘手的问题。为了能共享共用的JavaScript代码，我们采用一些约定来避免冲突。
+全局命名衝突難以調試，並且當兩個項目嘗試整合的時候可能引起棘手的問題。為了能共享共用的JavaScript代碼，我們採用一些約定來避免衝突。
 
-为全局代码使用命名空间
+為全局代碼使用命名空間
 #########################
 
-在全局范围内 *总是* 使用唯一的项目或库相关的伪命名空间进行前缀标识。如果你正在进行“Project Sloth”项目，一个合理的伪命名空间为 ``sloth.*`` 。
+在全局範圍內 *總是* 使用唯一的項目或庫相關的偽命名空間進行前綴標識。如果你正在進行「Project Sloth」項目，一個合理的偽命名空間為 ``sloth.*`` 。
 
 ::
 
@@ -62,7 +62,7 @@ JavaScript没有原生的对封装和命名空间的支持。
       ...
     };
 
-很多JavaScript库，包括 `the Closure Library <https://developers.google.com/closure/library/?csw=1>`_ 和 `Dojo toolkit <http://dojotoolkit.org/>`_ 给你高级功能来声明命名空间。保持你的命名空间声明一致。
+很多JavaScript庫，包括 `the Closure Library <https://developers.google.com/closure/library/?csw=1>`_ 和 `Dojo toolkit <http://dojotoolkit.org/>`_ 給你高級功能來聲明命名空間。保持你的命名空間聲明一致。
 
 ::
 
@@ -72,28 +72,28 @@ JavaScript没有原生的对封装和命名空间的支持。
       ...
     };
 
-尊重命名空间所有权
+尊重命名空間所有權
 #####################
 
-当选择一个子命名空间的时候，确保父命名空间知道你在做什么。如果你开始了一个为sloths创建hats的项目，确保Sloth这一组命名空间知道你在使用 ``sloth.hats`` 。
+當選擇一個子命名空間的時候，確保父命名空間知道你在做什麼。如果你開始了一個為sloths創建hats的項目，確保Sloth這一組命名空間知道你在使用 ``sloth.hats`` 。
 
-外部代码和内部代码使用不同的命名空间
+外部代碼和內部代碼使用不同的命名空間
 ########################################
 
-“外部代码”指的是来自你的代码库外并独立编译的代码。内部名称和外部名称应该严格区分开。如果你正在使用一个能调用 ``foo.hats.*`` 中的东西的外部库，你的内部代码不应该定义 ``foo.hats.*`` 中的所有符号，因为如果其他团队定义新符号就会把它打破。
+「外部代碼」指的是來自你的代碼庫外並獨立編譯的代碼。內部名稱和外部名稱應該嚴格區分開。如果你正在使用一個能調用 ``foo.hats.*`` 中的東西的外部庫，你的內部代碼不應該定義 ``foo.hats.*`` 中的所有符號，因為如果其他團隊定義新符號就會把它打破。
 
 ::
 
     foo.require('foo.hats');
     /**
-    *错误--不要这样做。
+    *錯誤--不要這樣做。
     * @constructor
     * @extends {foo.hats.RoundHat}
     */
     foo.hats.BowlerHat = function() {
     };
 
-如果你在外部命名空间中需要定义新的API，那么你应该明确地导出且仅导出公共的API函数。为了一致性和编译器更好的优化你的内部代码，你的内部代码应该使用内部API的内部名称调用它们。
+如果你在外部命名空間中需要定義新的API，那麼你應該明確地導出且僅導出公共的API函數。為了一致性和編譯器更好的優化你的內部代碼，你的內部代碼應該使用內部API的內部名稱調用它們。
 
 ::
 
@@ -109,10 +109,10 @@ JavaScript没有原生的对封装和命名空间的支持。
     };
     goog.exportSymbol('foo.hats.BowlerHat', googleyhats.BowlerHat);
 
-为长类型的名称提供别名提高可读性
+為長類型的名稱提供別名提高可讀性
 ###################################
 
-如果对完全合格的类型使用本地别名可以提高可读性，那么就这样做。本地别名的名称应该符合类型的最后一部分。
+如果對完全合格的類型使用本地別名可以提高可讀性，那麼就這樣做。本地別名的名稱應該符合類型的最後一部分。
 
 ::
 
@@ -135,7 +135,7 @@ JavaScript没有原生的对封装和命名空间的支持。
       staticHelper(new MyClass());
     };
 
-不要为命名空间起本地别名。命名空间应该只能使用 `goog.scope <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#goog-scope>`_ 命名别名。
+不要為命名空間起本地別名。命名空間應該只能使用 `goog.scope <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#goog-scope>`_ 命名別名。
 
 ::
 
@@ -144,7 +144,7 @@ JavaScript没有原生的对封装和命名空间的支持。
       namespace.MyClass.staticHelper(new namespace.MyClass());
     };
 
-避免访问一个别名类型的属性，除非它是一个枚举。
+避免訪問一個別名類型的屬性，除非它是一個枚舉。
 
 ::
 
@@ -171,43 +171,43 @@ JavaScript没有原生的对封装和命名空间的支持。
       MyClass.staticHelper(null);
     };
 
-永远不要在全局环境中创建别名。只在函数体内使用它们。
+永遠不要在全局環境中創建別名。只在函數體內使用它們。
 
 文件名
 ~~~~~~~~~
 
-为了避免在大小写敏感的平台上引起混淆，文件名应该小写。文件名应该以 ``.js`` 结尾，并且应该不包含除了 ``-`` 或 ``_`` （相比较 ``_`` 更推荐 ``-`` ）以外的其它标点。
+為了避免在大小寫敏感的平台上引起混淆，文件名應該小寫。文件名應該以 ``.js`` 結尾，並且應該不包含除了 ``-`` 或 ``_`` （相比較 ``_`` 更推薦 ``-`` ）以外的其它標點。
 
-自定义 toString() 方法
+自定義 toString() 方法
 ------------------------
 
-必须确保无误，并且无其他副作用。
+必須確保無誤，並且無其他副作用。
 
-你可以通过自定义 ``toString()`` 方法来控制对象如何字符串化他们自己。这没问题，但是你必须确保你的方法执行无误，并且无其他副作用。如果你的方法没有达到这个要求，就会很容易产生严重的问题。比如，如果 ``toString()`` 方法调用一个方法产生一个断言，断言可能要输出对象的名称，就又需要调用 ``toString()`` 方法。
+你可以通過自定義 ``toString()`` 方法來控制對像如何字符串化他們自己。這沒問題，但是你必須確保你的方法執行無誤，並且無其他副作用。如果你的方法沒有達到這個要求，就會很容易產生嚴重的問題。比如，如果 ``toString()`` 方法調用一個方法產生一個斷言，斷言可能要輸出對象的名稱，就又需要調用 ``toString()`` 方法。
 
-延时初始化
+延時初始化
 --------------
 
 可以使用。
 
-并不总在变量声明的地方就进行变量初始化，所以延时初始化是可行的。
+並不總在變量聲明的地方就進行變量初始化，所以延時初始化是可行的。
 
-明确作用域
+明確作用域
 --------------
 
-时常。
+時常。
 
-经常使用明确的作用域加强可移植性和清晰度。例如，在作用域链中不要依赖 ``window`` 。你可能想在其他应用中使用你的函数，这时此 ``window`` 就非彼 ``window`` 了。
+經常使用明確的作用域加強可移植性和清晰度。例如，在作用域鏈中不要依賴 ``window`` 。你可能想在其他應用中使用你的函數，這時此 ``window`` 就非彼 ``window`` 了。
 
-代码格式
+代碼格式
 ----------
 
-我们原则上遵循 `C++格式规范 <http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Formatting>`_ ，并且进行以下额外的说明。
+我們原則上遵循 `C++格式規範 <http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Formatting>`_ ，並且進行以下額外的說明。
 
-大括号
+大括號
 ~~~~~~~~
 
-由于隐含分号的插入，无论大括号括起来的是什么，总是在同一行上开始你的大括号。例如：
+由於隱含分號的插入，無論大括號括起來的是什麼，總是在同一行上開始你的大括號。例如：
 
 ::
 
@@ -217,21 +217,21 @@ JavaScript没有原生的对封装和命名空间的支持。
       // …
     }
 
-数组和对象初始化表达式
+數組和對像初始化表達式
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-当单行数组和对象初始化表达式可以在一行写开时，写成单行是允许的。
+當單行數組和對像初始化表達式可以在一行寫開時，寫成單行是允許的。
 
 ::
 
-    var arr = [1, 2, 3];  //之后无空格[或之前]
-    var obj = {a: 1, b: 2, c: 3};  //之后无空格[或之前]
+    var arr = [1, 2, 3];  //之後無空格[或之前]
+    var obj = {a: 1, b: 2, c: 3};  //之後無空格[或之前]
 
-多行数组和对象初始化表达式缩进两个空格，括号的处理就像块一样单独成行。
+多行數組和對像初始化表達式縮進兩個空格，括號的處理就像塊一樣單獨成行。
 
 ::
 
-    //对象初始化表达式
+    //對像初始化表達式
     var inset = {
       top: 10,
       right: 20,
@@ -239,7 +239,7 @@ JavaScript没有原生的对封装和命名空间的支持。
       left: 12
     };
 
-    //数组初始化表达式
+    //數組初始化表達式
     this.rows_ = [
       '"Slartibartfast" <fjordmaster@magrathea.com>',
       '"Zaphod Beeblebrox" <theprez@universe.gov>',
@@ -249,14 +249,14 @@ JavaScript没有原生的对封装和命名空间的支持。
       'the.mice@magrathea.com'
     ];
 
-    //在方法调用中使用
+    //在方法調用中使用
     goog.dom.createDom(goog.dom.TagName.DIV, {
       id: 'foo',
       className: 'some-css-class',
       style: 'display:none'
     }, 'Hello, world!');
 
-长标识符或值在对齐的初始化列表中存在问题，所以初始化值不必对齐。例如：
+長標識符或值在對齊的初始化列表中存在問題，所以初始化值不必對齊。例如：
 
 ::
 
@@ -266,7 +266,7 @@ JavaScript没有原生的对封装和命名空间的支持。
       lengthyName: 2
     };
 
-不要像这样：
+不要像這樣：
 
 ::
 
@@ -276,23 +276,23 @@ JavaScript没有原生的对封装和命名空间的支持。
       lengthyName: 2
     };
 
-函数参数
+函數參數
 ~~~~~~~~~
 
-如果可能，应该在同一行上列出所有函数参数。如果这样做将超出每行80个字符的限制，参数必须以一种可读性较好的方式进行换行。为了节省空间，在每一行你可以尽可能的接近80个字符，或者把每一个参数单独放在一行以提高可读性。缩进可能是四个空格，或者和括号对齐。下面是最常见的参数换行形式：
+如果可能，應該在同一行上列出所有函數參數。如果這樣做將超出每行80個字符的限制，參數必須以一種可讀性較好的方式進行換行。為了節省空間，在每一行你可以盡可能的接近80個字符，或者把每一個參數單獨放在一行以提高可讀性。縮進可能是四個空格，或者和括號對齊。下面是最常見的參數換行形式：
 
 ::
 
-    // 四个空格，每行包括80个字符。适用于非常长的函数名，
-    // 重命名不需要重新缩进，占用空间小。
+    // 四個空格，每行包括80個字符。適用於非常長的函數名，
+    // 重命名不需要重新縮進，佔用空間小。
     goog.foo.bar.doThingThatIsVeryDifficultToExplain = function(
         veryDescriptiveArgumentNumberOne, veryDescriptiveArgumentTwo,
         tableModelEventHandlerProxy, artichokeDescriptorAdapterIterator) {
         // ...
     };
 
-    //四个空格，每行一个参数。适用于长函数名，
-    // 允许重命名，并且强调每一个参数。
+    //四個空格，每行一個參數。適用於長函數名，
+    // 允許重命名，並且強調每一個參數。
     goog.foo.bar.doThingThatIsVeryDifficultToExplain = function(
         veryDescriptiveArgumentNumberOne,
         veryDescriptiveArgumentTwo,
@@ -301,15 +301,15 @@ JavaScript没有原生的对封装和命名空间的支持。
         // ...
     };
 
-    // 缩进和括号对齐，每行80字符。 看上去是分组的参数，
-    // 占用空间小。
+    // 縮進和括號對齊，每行80字符。 看上去是分組的參數，
+    // 佔用空間小。
     function foo(veryDescriptiveArgumentNumberOne, veryDescriptiveArgumentTwo,
                 tableModelEventHandlerProxy, artichokeDescriptorAdapterIterator) {
         // ...
     }
 
-    // 和括号对齐，每行一个参数。看上去是分组的并且
-    // 强调每个单独的参数。
+    // 和括號對齊，每行一個參數。看上去是分組的並且
+    // 強調每個單獨的參數。
     function bar(veryDescriptiveArgumentNumberOne,
                 veryDescriptiveArgumentTwo,
                 tableModelEventHandlerProxy,
@@ -317,7 +317,7 @@ JavaScript没有原生的对封装和命名空间的支持。
         // ...
     }
 
-当函数调用本身缩进，你可以自由地开始相对于原始声明的开头或者相对于当前函数调用的开头，进行4个空格的缩进。以下都是可接受的缩进风格。
+當函數調用本身縮進，你可以自由地開始相對於原始聲明的開頭或者相對於當前函數調用的開頭，進行4個空格的縮進。以下都是可接受的縮進風格。
 
 ::
 
@@ -330,10 +330,10 @@ JavaScript没有原生的对封装和命名空间的支持。
               veryLongFunctionNameF)));
     }
 
-匿名函数传递
+匿名函數傳遞
 ~~~~~~~~~~~~~~
 
-当在一个函数的参数列表中声明一个匿名函数时，函数体应该与声明的左边缘缩进两个空格，或者与function关键字的左边缘缩进两个空格。这是为了匿名函数体更加可读（即不被挤在屏幕的右侧）。
+當在一個函數的參數列表中聲明一個匿名函數時，函數體應該與聲明的左邊緣縮進兩個空格，或者與function關鍵字的左邊緣縮進兩個空格。這是為了匿名函數體更加可讀（即不被擠在屏幕的右側）。
 
 ::
 
@@ -351,18 +351,18 @@ JavaScript没有原生的对封装和命名空间的支持。
           return item.name;
         });
 
-使用goog.scope命名别名
+使用goog.scope命名別名
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-`goog.scope <https://docs.google.com/document/d/1ETFAuh2kaXMVL-vafUYhaWlhl6b5D9TOvboVg7Zl68Y/pub>`_ 可用于在使用 `the Closure Library <https://developers.google.com/closure/library/?csw=1>`_ 的工程中缩短命名空间的符号引用。
+`goog.scope <https://docs.google.com/document/d/1ETFAuh2kaXMVL-vafUYhaWlhl6b5D9TOvboVg7Zl68Y/pub>`_ 可用於在使用 `the Closure Library <https://developers.google.com/closure/library/?csw=1>`_ 的工程中縮短命名空間的符號引用。
 
-每个文件只能添加一个 ``goog.scope`` 调用。始终将它放在全局范围内。
+每個文件只能添加一個 ``goog.scope`` 調用。始終將它放在全局範圍內。
 
-开放的 ``goog.scope(function() {`` 调用必须在之前有一个空行，并且紧跟 ``goog.provide`` 声明、 ``goog.require`` 声明或者顶层的注释。调用必须在文件的最后一行闭合。在scope声明闭合处追加 ``// goog.scope`` 。注释与分号间隔两个空格。
+開放的 ``goog.scope(function() {`` 調用必須在之前有一個空行，並且緊跟 ``goog.provide`` 聲明、 ``goog.require`` 聲明或者頂層的註釋。調用必須在文件的最後一行閉合。在scope聲明閉合處追加 ``// goog.scope`` 。註釋與分號間隔兩個空格。
 
-和C++命名空间相似，不要在 ``goog.scope`` 声明下面缩进。相反，从第0列开始。
+和C++命名空間相似，不要在 ``goog.scope`` 聲明下面縮進。相反，從第0列開始。
 
-只取不会重新分配给另一个对象（例如大多数的构造函数、枚举和命名空间）的别名。不要这样做：
+只取不會重新分配給另一個對像（例如大多數的構造函數、枚舉和命名空間）的別名。不要這樣做：
 
 ::
 
@@ -372,7 +372,7 @@ JavaScript没有原生的对封装和命名空间的支持。
     Button = function() { ... };
     ...
 
-别名必须和全局中的命名的最后一个属性相同。
+別名必須和全局中的命名的最後一個屬性相同。
 
 ::
 
@@ -397,10 +397,10 @@ JavaScript没有原生的对封装和命名空间的支持。
     ...
     });  // goog.scope
 
-更多的缩进
+更多的縮進
 ~~~~~~~~~~~~
 
-事实上，除了 `初始化数组和对象 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Array_and_Object_literals>`_ 和传递匿名函数外，所有被拆开的多行文本应与之前的表达式左对齐，或者以4个（而不是2个）空格作为一缩进层次。
+事實上，除了 `初始化數組和對像 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Array_and_Object_literals>`_ 和傳遞匿名函數外，所有被拆開的多行文本應與之前的表達式左對齊，或者以4個（而不是2個）空格作為一縮進層次。
 
 ::
 
@@ -431,7 +431,7 @@ JavaScript没有原生的对封装和命名空间的支持。
 空行
 ~~~~~~
 
-使用新的空行来划分一组逻辑上相关联的代码片段。例如：
+使用新的空行來劃分一組邏輯上相關聯的代碼片段。例如：
 
 ::
 
@@ -446,7 +446,7 @@ JavaScript没有原生的对封装和命名空间的支持。
 二元和三元操作符
 ~~~~~~~~~~~~~~~~~~~
 
-操作符始终跟随着前行, 这样你就不用顾虑分号的隐式插入问题。否则换行符和缩进还是遵循其他谷歌规范指南。
+操作符始終跟隨著前行, 這樣你就不用顧慮分號的隱式插入問題。否則換行符和縮進還是遵循其他谷歌規範指南。
 
 ::
 
@@ -461,7 +461,7 @@ JavaScript没有原生的对封装和命名空间的支持。
             moreComplicatedB :
             moreComplicatedC;
 
-点号也应如此处理。
+點號也應如此處理。
 
 ::
 
@@ -469,45 +469,45 @@ JavaScript没有原生的对封装和命名空间的支持。
         doSomething().
         doSomethingElse();
 
-括号
+括號
 ----------
 
 只用在有需要的地方。
 
-通常只在语法或者语义需要的地方有节制地使用。
+通常只在語法或者語義需要的地方有節制地使用。
 
-绝对不要对一元运算符如 ``delete`` 、 ``typeof`` 和 ``void`` 使用括号或者在关键词如 ``return`` 、 ``throw`` 和其他的（ ``case`` 、 ``in`` 或者 ``new`` ）之后使用括号。
+絕對不要對一元運算符如 ``delete`` 、 ``typeof`` 和 ``void`` 使用括號或者在關鍵詞如 ``return`` 、 ``throw`` 和其他的（ ``case`` 、 ``in`` 或者 ``new`` ）之後使用括號。
 
 字符串
 --------
 
 使用 ``'`` 代替 ``"`` 。
 
-使用单引号（ ``'`` ）代替双引号（ ``"`` ）来保证一致性。当我们创建包含有HTML的字符串时这样做很有帮助。
+使用單引號（ ``'`` ）代替雙引號（ ``"`` ）來保證一致性。當我們創建包含有HTML的字符串時這樣做很有幫助。
 
 ::
 
     var msg = 'This is some HTML';
 
-可见性（私有和保护类型字段）
+可見性（私有和保護類型字段）
 -----------------------------
 
-鼓励使用 ``@private`` 和 ``@protected`` JSDoc注释。
+鼓勵使用 ``@private`` 和 ``@protected`` JSDoc註釋。
 
-我们建议使用JSDoc注释 ``@private`` 和 ``@protected`` 来标识出类、函数和属性的可见程度。
+我們建議使用JSDoc註釋 ``@private`` 和 ``@protected`` 來標識出類、函數和屬性的可見程度。
 
-设置 ``--jscomp_warning=visibility`` 可令编译器对可见性的违规进行编译器警告。可见 `封闭的编译器警告 <https://code.google.com/p/closure-compiler/wiki/Warnings>`_ 。
+設置 ``--jscomp_warning=visibility`` 可令編譯器對可見性的違規進行編譯器警告。可見 `封閉的編譯器警告 <https://code.google.com/p/closure-compiler/wiki/Warnings>`_ 。
 
-加了 ``@private`` 标记的全局变量和函数只能被同一文件中的代码所访问。
+加了 ``@private`` 標記的全局變量和函數只能被同一文件中的代碼所訪問。
 
-被标记为 ``@private`` 的构造函数只能被同一文件中的代码或者它们的静态和实例成员实例化。 ``@private`` 标记的构造函数可以被相同文件内它们的公共静态属性和 ``instanceof`` 运算符访问。
+被標記為 ``@private`` 的構造函數只能被同一文件中的代碼或者它們的靜態和實例成員實例化。 ``@private`` 標記的構造函數可以被相同文件內它們的公共靜態屬性和 ``instanceof`` 運算符訪問。
 
-全局变量、函数和构造函数不能注释 ``@protected`` 。
+全局變量、函數和構造函數不能註釋 ``@protected`` 。
 
 ::
 
     // 文件1
-    // AA_PrivateClass_ 和 AA_init_ 是全局的并且在同一个文件中所以能被访问
+    // AA_PrivateClass_ 和 AA_init_ 是全局的並且在同一個文件中所以能被訪問
 
     /**
     * @private
@@ -523,11 +523,11 @@ JavaScript没有原生的对封装和命名空间的支持。
 
     AA_init_();
 
-标记 ``@private`` 的属性可以被同一文件中的所有的代码访问，如果属性属于一个类，那么所有自身含有属性的类的静态方法和实例方法也可访问。它们不能被不同文件下的子类访问或者重写。
+標記 ``@private`` 的屬性可以被同一文件中的所有的代碼訪問，如果屬性屬於一個類，那麼所有自身含有屬性的類的靜態方法和實例方法也可訪問。它們不能被不同文件下的子類訪問或者重寫。
 
-标记 ``@protected`` 的属性可以被同一文件中的所有的代码访问，任何含有属性的子类的静态方法和实例方法也可访问。
+標記 ``@protected`` 的屬性可以被同一文件中的所有的代碼訪問，任何含有屬性的子類的靜態方法和實例方法也可訪問。
 
-注意这些语义和C++、JAVA中private 和 protected的不同，其许可同一文件中的所有代码访问的权限，而不是仅仅局限于同一类或者同一类层次。此外，不像C++中，子类不可重写私有属性。
+注意這些語義和C++、JAVA中private 和 protected的不同，其許可同一文件中的所有代碼訪問的權限，而不是僅僅局限於同一類或者同一類層次。此外，不像C++中，子類不可重寫私有屬性。
 
 ::
 
@@ -584,156 +584,156 @@ JavaScript没有原生的对封装和命名空间的支持。
       return this.protectedProp;
     };
 
-注意在Javascript中，一个类（如 ``AA_PrivateClass_`` ）和其构造函数类型是没有区别的。没办法确定一种类型是public而它的构造函数是private。（因为构造函数很容易重命名从而躲避隐私检查）。
+注意在Javascript中，一個類（如 ``AA_PrivateClass_`` ）和其構造函數類型是沒有區別的。沒辦法確定一種類型是public而它的構造函數是private。（因為構造函數很容易重命名從而躲避隱私檢查）。
 
-JavaScript类型
+JavaScript類型
 -----------------
 
-鼓励和强制执行的编译器。
+鼓勵和強制執行的編譯器。
 
-JSDoc记录类型时，要尽可能具体和准确。我们支持的类型是基于 `EcmaScript 4规范 <http://wiki.ecmascript.org/doku.php?id=spec:spec>`_ 。
+JSDoc記錄類型時，要盡可能具體和準確。我們支持的類型是基於 `EcmaScript 4規範 <http://wiki.ecmascript.org/doku.php?id=spec:spec>`_ 。
 
-JavaScript类型语言
+JavaScript類型語言
 ~~~~~~~~~~~~~~~~~~~
 
-ES4提案包含指定JavaScript类型的语言。我们使用JsDoc这种语言表达函数参数和返回值的类型。
+ES4提案包含指定JavaScript類型的語言。我們使用JsDoc這種語言表達函數參數和返回值的類型。
 
-随着ES4提议的发展，这种语言已经改变了。编译器仍然支持旧的语法类型，但这些语法已经被弃用了。
+隨著ES4提議的發展，這種語言已經改變了。編譯器仍然支持舊的語法類型，但這些語法已經被棄用了。
 
 .. list-table::
   :widths: 8 30 50 8
   :header-rows: 1
 
-  * - 语法名称
-    - 语法
+  * - 語法名稱
+    - 語法
     - 描述
-    - 弃用语法
-  * - 原始类型
-    - 在JavaScript中有5种原始类型： ``{null}`` ， ``{undefined}`` ， ``{boolean}`` ， ``{number}`` ，和 ``{string}`` 
-    - 类型的名称。
+    - 棄用語法
+  * - 原始類型
+    - 在JavaScript中有5種原始類型： ``{null}`` ， ``{undefined}`` ， ``{boolean}`` ， ``{number}`` ，和 ``{string}``
+    - 類型的名稱。
     -
-  * - 实例类型
-    - ``{Object}`` 
-      实例对象或空。
+  * - 實例類型
+    - ``{Object}``
+      實例對像或空。
 
-      ``{Function}`` 
-      一个实例函数或空。
+      ``{Function}``
+      一個實例函數或空。
 
-      ``{EventTarget}`` 
-      构造函数实现的EventTarget接口，或者为null的一个实例。
-    - 一个实例构造函数或接口函数。构造函数是 ``@constructor`` JSDoc标记定义的函数 。接口函数是 ``@interface`` JSDoc标记定义的函数。
+      ``{EventTarget}``
+      構造函數實現的EventTarget接口，或者為null的一個實例。
+    - 一個實例構造函數或接口函數。構造函數是 ``@constructor`` JSDoc標記定義的函數 。接口函數是 ``@interface`` JSDoc標記定義的函數。
 
-      默认情况下，实例类型将接受空。这是唯一的类型语法，使得类型为空。此表中的其他类型的语法不会接受空。
+      默認情況下，實例類型將接受空。這是唯一的類型語法，使得類型為空。此表中的其他類型的語法不會接受空。
     -
-  * - 枚举类型
-    - ``{goog.events.EventType}`` 字面量初始化对象的属性之一 ``goog.events.EventType`` 。
-    - 一个枚举必须被初始化为一个字面量对象，或作为另一个枚举的别名,加注 ``@enum`` JSDoc标记。这个属性是枚举实例。 `下面 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#enums>`_ 是枚举语法的定义。
+  * - 枚舉類型
+    - ``{goog.events.EventType}`` 字面量初始化對象的屬性之一 ``goog.events.EventType`` 。
+    - 一個枚舉必須被初始化為一個字面量對象，或作為另一個枚舉的別名,加注 ``@enum`` JSDoc標記。這個屬性是枚舉實例。 `下面 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#enums>`_ 是枚舉語法的定義。
 
-      请注意，这是我们的类型系统中为数不多的ES4规范以外的事情之一。
+      請注意，這是我們的類型系統中為數不多的ES4規範以外的事情之一。
     -
-  * - 应用类型
-    - ``{Array.<string>}`` 字符串数组。
+  * - 應用類型
+    - ``{Array.<string>}`` 字符串數組。
 
-      ``{Object.<string, number>}`` 一个对象，其中键是字符串，值是数字。
-    - 参数化类型，该类型应用一组参数类型。这个想法是类似于Java泛型。
+      ``{Object.<string, number>}`` 一個對象，其中鍵是字符串，值是數字。
+    - 參數化類型，該類型應用一組參數類型。這個想法是類似於Java泛型。
     -
-  * - 联合类型
-    - ``{(number|boolean)}`` 一个数字或布尔值。
-    - 表明一个值可能有A型或B型。
+  * - 聯合類型
+    - ``{(number|boolean)}`` 一個數字或布爾值。
+    - 表明一個值可能有A型或B型。
 
-      括号在顶层表达式可以省略，但在子表达式不能省略，以避免歧义。
+      括號在頂層表達式可以省略，但在子表達式不能省略，以避免歧義。
 
-      ``{number|boolean}`` 
+      ``{number|boolean}``
 
-      ``{function(): (number|boolean)}`` 
+      ``{function(): (number|boolean)}``
     - ``{(number,boolean)}`` ，
-      ``{(number||boolean)}`` 
-  * - 可为空的类型
-    - ``{?number}`` 
+      ``{(number||boolean)}``
+  * - 可為空的類型
+    - ``{?number}``
 
-      一个数字或空。
-    - 空类型与任意其他类型组合的简称。这仅仅是语法糖（syntactic sugar）。
-    - ``{number?}`` 
-  * - 非空类型
-    - ``{!Object}`` 
+      一個數字或空。
+    - 空類型與任意其他類型組合的簡稱。這僅僅是語法糖（syntactic sugar）。
+    - ``{number?}``
+  * - 非空類型
+    - ``{!Object}``
 
-      一个对象，值非空。
-    - 从非空类型中过滤掉null。最常用于实例类型，默认可为空。
-    - ``{Object!}`` 
-  * - 记录类型
-    - ``{{myNum: number, myObject}}`` 
+      一個對象，值非空。
+    - 從非空類型中過濾掉null。最常用於實例類型，默認可為空。
+    - ``{Object!}``
+  * - 記錄類型
+    - ``{{myNum: number, myObject}}``
 
-      给定成员类型的匿名类型。
-    - 表示该值有指定的类型的成员。在这种情况下， ``myNum`` 是 ``number`` 类型而 ``myObject`` 可为任何类型。
+      給定成員類型的匿名類型。
+    - 表示該值有指定的類型的成員。在這種情況下， ``myNum`` 是 ``number`` 類型而 ``myObject`` 可為任何類型。
 
-      注意花括号是语法类型的一部分。例如，表示一个数组对象有一个 ``length`` 属性，你可以写 ``Array.<{length}>`` 。
+      注意花括號是語法類型的一部分。例如，表示一個數組對像有一個 ``length`` 屬性，你可以寫 ``Array.<{length}>`` 。
     -
-  * - 函数类型
-    - ``{function(string, boolean)}`` 
+  * - 函數類型
+    - ``{function(string, boolean)}``
 
-      一个函数接受两个参数（一个字符串和一个布尔值），并拥有一个未知的返回值。
-    - 指定一个函数。
+      一個函數接受兩個參數（一個字符串和一個布爾值），並擁有一個未知的返回值。
+    - 指定一個函數。
     -
-  * - 函数返回类型
-    - ``{function(): number}`` 
+  * - 函數返回類型
+    - ``{function(): number}``
 
-      一个函数没有参数并返回一个数字。
-    - 指定函数的返回类型。
+      一個函數沒有參數並返回一個數字。
+    - 指定函數的返回類型。
     -
-  * - 函数 ``this`` 类型
-    - ``{function(this:goog.ui.Menu, string)}`` 
+  * - 函數 ``this`` 類型
+    - ``{function(this:goog.ui.Menu, string)}``
 
-      一个需要一个参数（字符串）的函数，执行上下文是 ``goog.ui.Menu`` 
-    - 指定函数类型的上下文类型。
+      一個需要一個參數（字符串）的函數，執行上下文是 ``goog.ui.Menu``
+    - 指定函數類型的上下文類型。
     -
-  * - 函数 ``new`` 类型
-    - ``{function(new:goog.ui.Menu, string)}`` 
+  * - 函數 ``new`` 類型
+    - ``{function(new:goog.ui.Menu, string)}``
 
-      一个构造函数接受一个参数（一个字符串），并在使用“new”关键字时创建一个 ``goog.ui.Menu`` 新实例。
-    - 指定构造函数所构造的类型。
+      一個構造函數接受一個參數（一個字符串），並在使用「new」關鍵字時創建一個 ``goog.ui.Menu`` 新實例。
+    - 指定構造函數所構造的類型。
     -
-  * - 可变参数
-    - ``{function(string, ...[number]): number}`` 
+  * - 可變參數
+    - ``{function(string, ...[number]): number}``
 
-      一个函数，它接受一个参数（一个字符串），然后一个可变数目的参数，必须是数字。
-    - 指定函数的变量参数。
+      一個函數，它接受一個參數（一個字符串），然後一個可變數目的參數，必須是數字。
+    - 指定函數的變量參數。
     -
-  * - 可变参数（ ``@param`` 注释）
-    - ``@param {...number} var_args`` 
+  * - 可變參數（ ``@param`` 註釋）
+    - ``@param {...number} var_args``
 
-      带注释函数的可变数目参数。
-    - 指定带注释函数接受一个可变数目的参数。
+      帶註釋函數的可變數目參數。
+    - 指定帶註釋函數接受一個可變數目的參數。
     -
-  * - 函数 `可选参数 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#optional>`_ 
-    - ``{function(?string=, number=)}`` 
+  * - 函數 `可選參數 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#optional>`_
+    - ``{function(?string=, number=)}``
 
-      一个函数，它接受一个可选的、可以为空的字符串和一个可选的数字作为参数。“=”只用于函数类型声明。
-    - 指定函数的可选参数。
+      一個函數，它接受一個可選的、可以為空的字符串和一個可選的數字作為參數。「=」只用於函數類型聲明。
+    - 指定函數的可選參數。
     -
-  * - 函数 `可选参数 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#optional>`_ （ ``@param`` 注释）
-    - ``@param {number=} opt_argument`` 
+  * - 函數 `可選參數 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#optional>`_ （ ``@param`` 註釋）
+    - ``@param {number=} opt_argument``
 
-      ``number`` 类型的可选参数。
-    - 指定带注释函数接受一个可选的参数。
+      ``number`` 類型的可選參數。
+    - 指定帶註釋函數接受一個可選的參數。
     -
-  * - 所有类型
-    - ``{*}`` 
-    - 表明该变量可以接受任何类型。
+  * - 所有類型
+    - ``{*}``
+    - 表明該變量可以接受任何類型。
     -
-  * - 未知类型
-    - ``{?}`` 
-    - 表明该变量可以接受任何类型，编译器不应该检查其类型。
+  * - 未知類型
+    - ``{?}``
+    - 表明該變量可以接受任何類型，編譯器不應該檢查其類型。
     -
 
-JavaScript中的类型
+JavaScript中的類型
 ~~~~~~~~~~~~~~~~~~~
 
 .. list-table::
   :widths: 20 30 50
   :header-rows: 1
 
-  * - 类型举例
-    - 取值举例
+  * - 類型舉例
+    - 取值舉例
     - 描述
   * - number
     - ::
@@ -748,7 +748,7 @@ JavaScript中的类型
     - ::
 
         new Number(true)
-    - `Number对象 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Wrapper_objects_for_primitive_types>`_ 
+    - `Number對像 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Wrapper_objects_for_primitive_types>`_
   * - string
     - ::
 
@@ -761,7 +761,7 @@ JavaScript中的类型
 
           new String('Hello')
           new String(42)
-    - `String对象 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Wrapper_objects_for_primitive_types>`_ 
+    - `String對像 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Wrapper_objects_for_primitive_types>`_
   * - boolean
     - ::
 
@@ -773,7 +773,7 @@ JavaScript中的类型
     - ::
 
         new Boolean(true)
-    - `Boolean对象 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Wrapper_objects_for_primitive_types>`_ 
+    - `Boolean對像 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Wrapper_objects_for_primitive_types>`_
   * - RegExp
     - ::
 
@@ -802,23 +802,23 @@ JavaScript中的类型
           function f() {
             return;
           }
-    - 没有返回值
+    - 沒有返回值
   * - Array
     - ::
 
           ['foo', 0.3, null]
           []
-    - 无类型数组
+    - 無類型數組
   * - Array.<number>
     - ::
 
           [11, 22, 33]
-    - 数字数组
+    - 數字數組
   * - Array.<Array.<string>>
     - ::
 
           [['one', 'two', 'three'], ['foo', 'bar']]
-    - 以字符串为元素的数组，作为另一个数组的元素
+    - 以字符串為元素的數組，作為另一個數組的元素
   * - Object
     - ::
 
@@ -829,29 +829,29 @@ JavaScript中的类型
     - ::
 
         {'foo': 'bar'}
-    - 值为字符串的对象
+    - 值為字符串的對象
   * - Object.<number, string>
     - ::
 
           var obj = {};
           obj[1] = 'bar';
-    - 键为整数，值为字符串的对象。
-      注意，js当中键总是会隐式转换为字符串。所以 ``obj['1'] == obj[1]`` 。键在for…in…循环中，总是字符串类型。但在对象中索引时编译器会验证键的类型。
+    - 鍵為整數，值為字符串的對象。
+      注意，js當中鍵總是會隱式轉換為字符串。所以 ``obj['1'] == obj[1]`` 。鍵在for…in…循環中，總是字符串類型。但在對像中索引時編譯器會驗證鍵的類型。
   * - Function
     - ::
 
           function(x, y) {
             return x * y;
           }
-    - `Function对象 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Wrapper_objects_for_primitive_types>`_ 
+    - `Function對像 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Wrapper_objects_for_primitive_types>`_
   * - function(number, number): number
     - ::
 
           function(x, y) {
             return x * y;
           }
-    - 函数值
-  * - 类
+    - 函數值
+  * - 類
     - ::
 
           /** @constructor */
@@ -885,9 +885,9 @@ JavaScript中的类型
             /** The color red. */
             RED: '#dd0000'
           };
-    - 枚举
+    - 枚舉
 
-      JSDoc中枚举的值都是可选的.
+      JSDoc中枚舉的值都是可選的.
   * - Element
     - ::
 
@@ -897,34 +897,34 @@ JavaScript中的类型
     - ::
 
         document.body.firstChild
-    - DOM节点
+    - DOM節點
   * - HTMLInputElement
     - ::
 
         htmlDocument.getElementsByTagName('input')[0]
-    - 指明类型的DOM元素
+    - 指明類型的DOM元素
 
-类型转换
+類型轉換
 ~~~~~~~~~~
 
-在类型检测不准确的情况下，有可能需要添加类型的注释，并且把类型转换的表达式写在括号里，括号是必须的。如：
+在類型檢測不準確的情況下，有可能需要添加類型的註釋，並且把類型轉換的表達式寫在括號裡，括號是必須的。如：
 
 ::
 
     /** @type {number} */ (x)
 
-可为空与可选的参数和属性
+可為空與可選的參數和屬性
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-因为Javascript是一个弱类型的语言，明白函数参数、类属性的可选、可为空和未定义之间的细微差别是非常重要的。
+因為Javascript是一個弱類型的語言，明白函數參數、類屬性的可選、可為空和未定義之間的細微差別是非常重要的。
 
-对象类型和引用类型默认可为空。如以下表达式：
+對像類型和引用類型默認可為空。如以下表達式：
 
 ::
 
     /**
-    * 传入值初始化的类
-    * @param {Object} value某个值
+    * 傳入值初始化的類
+    * @param {Object} value某個值
     * @constructor
     */
     function MyClass(value) {
@@ -936,13 +936,13 @@ JavaScript中的类型
       this.myValue_ = value;
     }
 
-告诉编译器 ``myValue_`` 属性为一对象或null。如果 ``myValue_`` 永远都不会为null, 就应该如下声明:
+告訴編譯器 ``myValue_`` 屬性為一對像或null。如果 ``myValue_`` 永遠都不會為null, 就應該如下聲明:
 
 ::
 
     /**
-    * 传入非null值初始化的类
-    * @param {!Object} value某个值
+    * 傳入非null值初始化的類
+    * @param {!Object} value某個值
     * @constructor
     */
     function MyClass(value) {
@@ -954,15 +954,15 @@ JavaScript中的类型
       this.myValue_ = value;
     }
 
-这样，如果编译器可以识别出 ``MyClass`` 初始化传入值为null，就会发出一个警告。
+這樣，如果編譯器可以識別出 ``MyClass`` 初始化傳入值為null，就會發出一個警告。
 
-函数的可选参数在运行时可能会是undefined，所以如果他们是类的属性，那么必须声明：
+函數的可選參數在運行時可能會是undefined，所以如果他們是類的屬性，那麼必須聲明：
 
 ::
 
     /**
-    * 传入可选值初始化的类
-    * @param {Object=} opt_value某个值（可选）
+    * 傳入可選值初始化的類
+    * @param {Object=} opt_value某個值（可選）
     * @constructor
     */
     function MyClass(opt_value) {
@@ -974,29 +974,29 @@ JavaScript中的类型
       this.myValue_ = opt_value;
     }
 
-这告诉编译器 ``myValue_`` 可能是一个对象，或 ``null`` ，或 ``undefined`` 。
+這告訴編譯器 ``myValue_`` 可能是一個對象，或 ``null`` ，或 ``undefined`` 。
 
-注意: 可选参数 ``opt_value`` 被声明成 ``{Object=}`` ，而不是 ``{Object|undefined}`` 。这是因为可选参数可能是undefined。虽然直接写undefined也并无害处，但鉴于可阅读性还是写成上述的样子。
+注意: 可選參數 ``opt_value`` 被聲明成 ``{Object=}`` ，而不是 ``{Object|undefined}`` 。這是因為可選參數可能是undefined。雖然直接寫undefined也並無害處，但鑒於可閱讀性還是寫成上述的樣子。
 
-最后，属性的可为空和可选并不矛盾，下面的四种声明各不相同：
+最後，屬性的可為空和可選並不矛盾，下面的四種聲明各不相同：
 
 ::
 
     /**
-    * 接受四个参数，两个可为空，两个可选
-    * @param {!Object} nonNull 必不为null
-    * @param {Object} mayBeNull 可为null
-    * @param {!Object=} opt_nonNull 可选但必不为null
-    * @param {Object=} opt_mayBeNull 可选可为null
+    * 接受四個參數，兩個可為空，兩個可選
+    * @param {!Object} nonNull 必不為null
+    * @param {Object} mayBeNull 可為null
+    * @param {!Object=} opt_nonNull 可選但必不為null
+    * @param {Object=} opt_mayBeNull 可選可為null
     */
     function strangeButTrue(nonNull, mayBeNull, opt_nonNull, opt_mayBeNull) {
       // ...
     };
 
-类型定义
+類型定義
 ~~~~~~~~~~
 
-有时类型可以变得复杂。一个函数，它接受一个元素的内容可能看起来像：
+有時類型可以變得複雜。一個函數，它接受一個元素的內容可能看起來像：
 
 ::
 
@@ -1009,7 +1009,7 @@ JavaScript中的类型
       ...
     };
 
-你可以定义带 ``@typedef`` 标记的常用类型表达式。例如：
+你可以定義帶 ``@typedef`` 標記的常用類型表達式。例如：
 
 ::
 
@@ -1025,10 +1025,10 @@ JavaScript中的类型
     ...
     };
 
-模板类型
+模板類型
 ~~~~~~~~~~
 
-编译器对模板类型提供有限支持。它只能从字面上通过 ``this`` 参数的类型和 ``this`` 参数是否丢失推断匿名函数的 ``this`` 类型。
+編譯器對模板類型提供有限支持。它只能從字面上通過 ``this`` 參數的類型和 ``this`` 參數是否丟失推斷匿名函數的 ``this`` 類型。
 
 ::
 
@@ -1041,27 +1041,27 @@ JavaScript中的类型
     goog.bind = function(fn, thisObj, var_args) {
     ...
     };
-    //可能出现属性丢失警告
+    //可能出現屬性丟失警告
     goog.bind(function() { this.someProperty; }, new SomeClass());
-    //出现this未定义警告
+    //出現this未定義警告
     goog.bind(function() { this.someProperty; });
 
-注释
+註釋
 ----------
 
 使用JSDoc。
 
-我们使用 `c++的注释风格 <http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments>`_ 。
-所有的文件、类、方法和属性都应该用合适的 `JSDoc <https://code.google.com/p/jsdoc-toolkit/>`_ 的 `标签 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#JSDoc_Tag_Reference>`_ 和 `类型 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#JsTypes>`_ 注释。除了直观的方法名称和参数名称外，方法的描述、方法的参数以及方法的返回值也要包含进去。
+我們使用 `c++的註釋風格 <http://google-styleguide.googlecode.com/svn/trunk/cppguide.xml#Comments>`_ 。
+所有的文件、類、方法和屬性都應該用合適的 `JSDoc <https://code.google.com/p/jsdoc-toolkit/>`_ 的 `標籤 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#JSDoc_Tag_Reference>`_ 和 `類型 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#JsTypes>`_ 註釋。除了直觀的方法名稱和參數名稱外，方法的描述、方法的參數以及方法的返回值也要包含進去。
 
-行内注释应该使用 ``//`` 的形式。
+行內註釋應該使用 ``//`` 的形式。
 
-为了避免出现语句片段，要使用正确的大写单词开头，并使用正确的标点符号作为结束。
+為了避免出現語句片段，要使用正確的大寫單詞開頭，並使用正確的標點符號作為結束。
 
-注释语法
+註釋語法
 ~~~~~~~~~~
 
-JSDoc的语法基于 `JavaDoc <http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html>`_ ，许多编译工具从JSDoc注释中获取信息从而进行代码验证和优化，所以这些注释必须符合语法规则。
+JSDoc的語法基於 `JavaDoc <http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html>`_ ，許多編譯工具從JSDoc註釋中獲取信息從而進行代碼驗證和優化，所以這些註釋必須符合語法規則。
 
 ::
 
@@ -1071,10 +1071,10 @@ JSDoc的语法基于 `JavaDoc <http://www.oracle.com/technetwork/java/javase/doc
     * @desc Block tags should always start on their own line.
     */
 
-JSDoc 缩进
+JSDoc 縮進
 ~~~~~~~~~~~~~
 
-如果你不得不进行换行，那么你应该像在代码里那样，使用四个空格进行缩进。
+如果你不得不進行換行，那麼你應該像在代碼裡那樣，使用四個空格進行縮進。
 
 ::
 
@@ -1089,9 +1089,9 @@ JSDoc 缩进
       return 5;
     };
 
-不必在 ``@fileoverview`` 标记中使用缩进。
+不必在 ``@fileoverview`` 標記中使用縮進。
 
-虽然不建议，但依然可以对描述文字进行排版。
+雖然不建議，但依然可以對描述文字進行排版。
 
 ::
 
@@ -1109,9 +1109,9 @@ JSDoc 缩进
 JSDoc中的HTML
 ~~~~~~~~~~~~~~~~
 
-像JavaDoc一样, JSDoc 支持很多的HTML标签，像 ``<code>`` ， ``<pre>`` ， ``<tt>`` ， ``<strong>`` ， ``<ul>`` ， ``<ol>`` ， ``<li>`` ， ``<a>`` 等。
+像JavaDoc一樣, JSDoc 支持很多的HTML標籤，像 ``<code>`` ， ``<pre>`` ， ``<tt>`` ， ``<strong>`` ， ``<ul>`` ， ``<ol>`` ， ``<li>`` ， ``<a>`` 等。
 
-这就意味着不建议采用纯文本的格式。所以，不要在JSDoc里使用空白符进行格式化。
+這就意味著不建議採用純文本的格式。所以，不要在JSDoc裡使用空白符進行格式化。
 
 ::
 
@@ -1122,7 +1122,7 @@ JSDoc中的HTML
     *  last timestamp
     */
 
-上面的注释会变成这样：
+上面的註釋會變成這樣：
 
 ::
 
@@ -1141,12 +1141,12 @@ JSDoc中的HTML
     * </ul>
     */
 
-`JavaDoc <http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html>`_ 风格指南对于如何编写良好的doc注释是非常有帮助的。
+`JavaDoc <http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html>`_ 風格指南對於如何編寫良好的doc註釋是非常有幫助的。
 
-顶层/文件层注释
+頂層/文件層註釋
 ~~~~~~~~~~~~~~~~~~
 
-`版权声明 <http://google-styleguide.googlecode.com/svn/trunk/copyright.html>`_ 和作者信息是可选的。顶层注释的目的是为了让不熟悉代码的读者了解文件中有什么。它需要描述文件内容，依赖关系以及兼容性的信息。例如：
+`版權聲明 <http://google-styleguide.googlecode.com/svn/trunk/copyright.html>`_ 和作者信息是可選的。頂層註釋的目的是為了讓不熟悉代碼的讀者瞭解文件中有什麼。它需要描述文件內容，依賴關係以及兼容性的信息。例如：
 
 ::
 
@@ -1155,10 +1155,10 @@ JSDoc中的HTML
     * about its dependencies.
     */
 
-Class评论
+Class評論
 ~~~~~~~~~~~
 
-类必须记录说明与描述和 `一个类型的标签 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#constructor-tag>`_ ，标识的构造函数。类必须加以描述，若是构造函数则需标注出。
+類必須記錄說明與描述和 `一個類型的標籤 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#constructor-tag>`_ ，標識的構造函數。類必須加以描述，若是構造函數則需標注出。
 
 ::
 
@@ -1174,10 +1174,10 @@ Class评论
     };
     goog.inherits(project.MyClass, goog.Disposable);
 
-方法和功能注释
+方法和功能註釋
 ~~~~~~~~~~~~~~~
 
-参数和返回类型应该被记录下来。如果方法描述从参数或返回类型的描述中明确可知则可以省略。方法描述应该由一个第三人称表达的句子开始。
+參數和返回類型應該被記錄下來。如果方法描述從參數或返回類型的描述中明確可知則可以省略。方法描述應該由一個第三人稱表達的句子開始。
 
 ::
 
@@ -1191,7 +1191,7 @@ Class评论
       // ...
     }
 
-属性评论
+屬性評論
 ~~~~~~~~~~
 
 ::
@@ -1205,15 +1205,15 @@ Class评论
       this.someProperty = 4;
     }
 
-JSDoc标签参考
+JSDoc標籤參考
 ~~~~~~~~~~~~~~~
 
 .. list-table::
   :widths: 20 30 50
   :header-rows: 1
 
-  * - 标签
-    - 模板及实例
+  * - 標籤
+    - 模板及實例
     - 描述
   * - @author
     - @author username@google.com (first last)
@@ -1226,7 +1226,7 @@ JSDoc标签参考
         * @fileoverview Utilities for handling textareas.
         * @author kuth@google.com (Uthur Pendragon)
         */
-    - 说明文件的作者是谁，一般只会在 ``@fileoverview`` 里用到。
+    - 說明文件的作者是誰，一般只會在 ``@fileoverview`` 裡用到。
   * - @code
     - {@code ...}
 
@@ -1243,7 +1243,7 @@ JSDoc标签参考
         goog.dom.RangeIterator.prototype.next = function() {
           // ...
         };
-     - 表示这是一段代码，他能在文档中正确的格式化。
+     - 表示這是一段代碼，他能在文檔中正確的格式化。
   * - @const
     - @const
       @const {type}
@@ -1268,15 +1268,15 @@ JSDoc标签参考
         mynamespace.Request.prototype.initialize = function() {
           // This method cannot be overriden in a subclass.
         }
-    - 说明变量或者属性是只读的，适合内联。
+    - 說明變量或者屬性是只讀的，適合內聯。
 
-      标记为 ``@const`` 的变量是不可变的。如果变量或属性试图覆盖他的值，那么js编译器会给出警告。
+      標記為 ``@const`` 的變量是不可變的。如果變量或屬性試圖覆蓋他的值，那麼js編譯器會給出警告。
 
-      如果某一个值可以清楚地分辨出是不是常量，可以省略类型声明。变量附加的注释是可选的。
+      如果某一個值可以清楚地分辨出是不是常量，可以省略類型聲明。變量附加的註釋是可選的。
 
-      当一个方法被标记为 ``@const`` ，意味着这个方法不仅不可以被覆盖，而且也不能在子类中重写。
+      當一個方法被標記為 ``@const`` ，意味著這個方法不僅不可以被覆蓋，而且也不能在子類中重寫。
 
-      ``@const`` 的更多信息，请看 `常量 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Constants>`_ 部分
+      ``@const`` 的更多信息，請看 `常量 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Constants>`_ 部分
   * - @constructor
     - @constructor
 
@@ -1291,7 +1291,7 @@ JSDoc标签参考
         function GM_Rect() {
           ...
         }
-    - 在一个类的文档中表示构造函数。
+    - 在一個類的文檔中表示構造函數。
   * - @define
     - @define {Type} description
 
@@ -1304,9 +1304,9 @@ JSDoc标签参考
 
         /** @define {boolean} */
         goog.userAgent.ASSUME_IE = false;
-    - 指明一个在编译时可以被覆盖的常量。
+    - 指明一個在編譯時可以被覆蓋的常量。
 
-      在这个例子中，编译器标志 ``--define='goog.userAgent.ASSUME_IE=true'`` 表明在构建文件的时侯变量 ``goog.userAgent.ASSUME_IE`` 可以被赋值为 ``true`` 。
+      在這個例子中，編譯器標誌 ``--define='goog.userAgent.ASSUME_IE=true'`` 表明在構建文件的時侯變量 ``goog.userAgent.ASSUME_IE`` 可以被賦值為 ``true`` 。
   * - @deprecated
     - @deprecated Description
 
@@ -1324,7 +1324,7 @@ JSDoc标签参考
         BN_EditUtil.isTopEditableField = function(node) {
           // ...
         };
-    - 说明函数、方法或者属性已经不可用，常说明替代方法或者属性。
+    - 說明函數、方法或者屬性已經不可用，常說明替代方法或者屬性。
   * - @dict
     - @dict Description
 
@@ -1342,7 +1342,7 @@ JSDoc标签参考
         var obj = new Foo(123);
         var num = obj.x;  // warning
         (/** @dict \*/ { x: 1 }).x = 123;  // warning
-    - 当构造函数 (例子里的Foo)被标记为 ``@dict`` ，你只能使用括号表示法访问 ``Foo`` 的属性。这个注释也可以直接使用对象表达式。
+    - 當構造函數 (例子裡的Foo)被標記為 ``@dict`` ，你只能使用括號表示法訪問 ``Foo`` 的屬性。這個註釋也可以直接使用對像表達式。
   * - @enum
     - @enum {Type}
 
@@ -1371,18 +1371,18 @@ JSDoc标签参考
         foo.MyPublicClass.prototype.myPublicMethod = function() {
           // ...
         };
-    - 对于例子中的代码，当编译到 ``--generate_exports`` 标记时，将会产生以下代码：
+    - 對於例子中的代碼，當編譯到 ``--generate_exports`` 標記時，將會產生以下代碼：
 
       ::
 
         goog.exportSymbol('foo.MyPublicClass.prototype.myPublicMethod',
             foo.MyPublicClass.prototype.myPublicMethod);
 
-      也就是输出了没有编译的代码。使用@export标签时，应该：
+      也就是輸出了沒有編譯的代碼。使用@export標籤時，應該：
 
       1. 包含 ``//javascript/closure/base.js`` , 或者
 
-      2. 同时定义 ``goog.exportSymbol`` 和 ``goog.exportProperty`` 并且要使用相同的调用方法。
+      2. 同時定義 ``goog.exportSymbol`` 和 ``goog.exportProperty`` 並且要使用相同的調用方法。
   * - @expose
     - @expose
 
@@ -1392,9 +1392,9 @@ JSDoc标签参考
 
         /** @expose */
         MyClass.prototype.exposedProperty = 3;
-    - 声明一个公开的属性，表示这个属性不可以被删除、重命名或者由编译器进行优化。相同名称的属性也不能由编译器通过任何方式进行优化。
+    - 聲明一個公開的屬性，表示這個屬性不可以被刪除、重命名或者由編譯器進行優化。相同名稱的屬性也不能由編譯器通過任何方式進行優化。
 
-      ``@expose`` 不可以出现在代码库里，因为他会阻止这个属性被删除。
+      ``@expose`` 不可以出現在代碼庫裡，因為他會阻止這個屬性被刪除。
   * - @extends
     - @extends Type
       @extends {Type}
@@ -1411,7 +1411,7 @@ JSDoc标签参考
         goog.ds.EmptyNodeList = function() {
           ...
         };
-    - 和 ``@constructor`` 一起使用，表示从哪里继承过来的。类型外的大括号是可选的。
+    - 和 ``@constructor`` 一起使用，表示從哪裡繼承過來的。類型外的大括號是可選的。
   * - @externs
     - @externs
 
@@ -1425,7 +1425,7 @@ JSDoc标签参考
         */
 
         var document;
-    - 声明一个外部文件。
+    - 聲明一個外部文件。
   * - @fileoverview
     - @fileoverview Description
 
@@ -1438,7 +1438,7 @@ JSDoc标签参考
         * but not indented comment.
         * @author kuth@google.com (Uthur Pendragon)
         */
-    - 使注释提供文件级别的信息。
+    - 使註釋提供文件級別的信息。
   * - @implements
     - @implements Type
       @implements {Type}
@@ -1462,7 +1462,7 @@ JSDoc标签参考
         Square.prototype.draw = function() {
           ...
         };
-     - 使用 ``@constructor`` 来表示一个类实现了某个接口。类型外的大括号是可选的。
+     - 使用 ``@constructor`` 來表示一個類實現了某個接口。類型外的大括號是可選的。
   * - @inheritDoc
     - @inheritDoc
 
@@ -1474,9 +1474,9 @@ JSDoc标签参考
         project.SubClass.prototype.toString() {
           // ...
         };
-    - **已废弃。使用@override代替**
+    - **已廢棄。使用@override代替**
 
-      表示一个子类中的方法或者属性覆盖父类的方法或者属性，并且拥有相同的文档。注意， ``@inheritDoc`` 等同 ``@override`` 
+      表示一個子類中的方法或者屬性覆蓋父類的方法或者屬性，並且擁有相同的文檔。注意， ``@inheritDoc`` 等同 ``@override``
   * - @interface
     - @interface
 
@@ -1498,7 +1498,7 @@ JSDoc标签参考
         */
         function Polygon() {};
         Polygon.prototype.getSides = function() {};
-    - 表示一个函数定义了一个接口。
+    - 表示一個函數定義了一個接口。
   * - @lends
     - @lends objectName
       @lends {objectName}
@@ -1512,11 +1512,11 @@ JSDoc标签参考
             /** @lends {Button.prototype} */ {
             isButton: function() { return true; }
             });
-    - 表示对象的键是另外一个对象的属性。这个标记只能出现在对象字面量中。
+    - 表示對象的鍵是另外一個對象的屬性。這個標記只能出現在對像字面量中。
 
-      注意，括号中的名称和其他标记中的类型名称不一样，它是一个对象名，表明是从哪个对象“借过来”的属性。例如， ``@type {Foo}`` 意味着Foo的一个实例，但是 ``@lends {Foo}`` 意味着“Foo构造函数”.
+      注意，括號中的名稱和其他標記中的類型名稱不一樣，它是一個對像名，表明是從哪個對象「借過來」的屬性。例如， ``@type {Foo}`` 意味著Foo的一個實例，但是 ``@lends {Foo}`` 意味著「Foo構造函數」.
 
-      `JSDoc Toolkit docs <https://code.google.com/p/jsdoc-toolkit/wiki/TagLends>`_ 中有关于更多此标记的信息。
+      `JSDoc Toolkit docs <https://code.google.com/p/jsdoc-toolkit/wiki/TagLends>`_ 中有關於更多此標記的信息。
   * - @license or @preserve
     - @license Description
 
@@ -1530,9 +1530,9 @@ JSDoc标签参考
         * notice for this file. Note that the notice can span several
         * lines and is only terminated by the closing star and slash:
         */
-    - 由 ``@licenseor`` 或 ``@preserve`` 标记的内容，会被编译器保留并放到文件的顶部。
+    - 由 ``@licenseor`` 或 ``@preserve`` 標記的內容，會被編譯器保留並放到文件的頂部。
 
-      这个标记会让被标记的重要内容（例如法律许可或版权文本）原样输出，换行也是。
+      這個標記會讓被標記的重要內容（例如法律許可或版權文本）原樣輸出，換行也是。
   * - @noalias
     - @noalias
 
@@ -1542,7 +1542,7 @@ JSDoc标签参考
 
         /** @noalias */
         function Range() {}
-    - 用在外部文件当中，告诉编译器，这里的变量或者方法不可以重命名。
+    - 用在外部文件當中，告訴編譯器，這裡的變量或者方法不可以重命名。
   * - @nosideeffects
     - @nosideeffects
 
@@ -1562,7 +1562,7 @@ JSDoc标签参考
         a.prototype.noSideEffectsFn3 = function() {
           // ...
         };
-    - 用于函数和构造函数，说明调用这个函数没有副作用。如果返回值未被使用，此注释允许编译器移除对该函数的调用。
+    - 用於函數和構造函數，說明調用這個函數沒有副作用。如果返回值未被使用，此註釋允許編譯器移除對該函數的調用。
   * - @override
     - @override
 
@@ -1577,7 +1577,7 @@ JSDoc标签参考
         project.SubClass.prototype.toString() {
           // ...
         };
-    - 表示子类的方法或者属性故意隐藏了父类的方法或属性。如果子类没有其他的文档，方法或属性也会从父类那里继承文档。
+    - 表示子類的方法或者屬性故意隱藏了父類的方法或屬性。如果子類沒有其他的文檔，方法或屬性也會從父類那裡繼承文檔。
   * - @param
     - @param {Type} varname Description
 
@@ -1594,9 +1594,9 @@ JSDoc标签参考
         goog.Baz.prototype.query = function(groupNum, term) {
           // ...
         };
-    - 给方法、函数、构造函数的参数添加文档说明。
+    - 給方法、函數、構造函數的參數添加文檔說明。
 
-      `参数类型 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#JsTypes>`_ 一定要写在大括号里。如果类型被省略，编译器将不做类型检测。
+      `參數類型 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#JsTypes>`_ 一定要寫在大括號裡。如果類型被省略，編譯器將不做類型檢測。
   * - @private
     - @private
       @private {type}
@@ -1610,7 +1610,7 @@ JSDoc标签参考
         * @private {!Array.<Function>}
         */
         this.handlers\_ = [];
-    - 与方法或属性名结尾使用一个下划线来联合表明该成员是 `私有的 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Visibility__private_and_protected_fields_>`_ 。随着工具对 ``@private`` 的认可，结尾的下划线可能最终被废弃。
+    - 與方法或屬性名結尾使用一個下劃線來聯合表明該成員是 `私有的 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Visibility__private_and_protected_fields_>`_ 。隨著工具對 ``@private`` 的認可，結尾的下劃線可能最終被廢棄。
   * - @protected
     - @protected
       @protected {type}
@@ -1628,7 +1628,7 @@ JSDoc标签参考
         goog.ui.Component.prototype.setElementInternal = function(element) {
           // ...
         };
-    - 用来表明成员或属性是 ``受保护的 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Visibility__private_and_protected_fields_>``_ 。成员或属性应使用没有跟随下划线的名称。
+    - 用來表明成員或屬性是 ``受保護的 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Visibility__private_and_protected_fields_>``_ 。成員或屬性應使用沒有跟隨下劃線的名稱。
   * - @return
     - @return {Type} Description
 
@@ -1643,9 +1643,9 @@ JSDoc标签参考
           // ...
           return id;
         };
-    - 在方法或函数调用时使用，来说明返回类型。给布尔值写注释时，写成类似“这个组件是否可见”比“如果组件可见则为true，否则为false”要好。如果没有返回值，不使用 ``@return`` 标签。
+    - 在方法或函數調用時使用，來說明返回類型。給布爾值寫註釋時，寫成類似「這個組件是否可見」比「如果組件可見則為true，否則為false」要好。如果沒有返回值，不使用 ``@return`` 標籤。
 
-      `类型 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#JsTypes>`_ 名称必须包含在大括号内。如果省略类型，编译器将不会检查返回值的类型。
+      `類型 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#JsTypes>`_ 名稱必須包含在大括號內。如果省略類型，編譯器將不會檢查返回值的類型。
   * - @see
     - @see Link
 
@@ -1659,7 +1659,7 @@ JSDoc标签参考
         * @see goog.Collect
         * @see goog.RecklessAdder#add
         ...
-    - 参考查找另一个类或方法。
+    - 參考查找另一個類或方法。
   * - @struct
     - @struct Description
 
@@ -1682,7 +1682,7 @@ JSDoc标签参考
           method1: function() {}
         };
         Foo.prototype.method2 = function() {};  // warning
-    - 当一个构造函数（在本例中 ``Foo`` ）注释为 ``@struct`` ，你只能用点符号访问Foo对象的属性。此外，Foo对象创建后不能加新的属性。此注释也可以直接使用于对象字面量。
+    - 當一個構造函數（在本例中 ``Foo`` ）註釋為 ``@struct`` ，你只能用點符號訪問Foo對象的屬性。此外，Foo對像創建後不能加新的屬性。此註釋也可以直接使用於對像字面量。
   * - @supported
     - @supported Description
 
@@ -1696,7 +1696,7 @@ JSDoc标签参考
         * browsers' event systems.
         * @supported So far tested in IE6 and FF1.5
         */
-    - 用于在文件信息中说明该文档被哪些浏览器支持
+    - 用於在文件信息中說明該文檔被哪些瀏覽器支持
   * - @suppress
     - @suppress {warning1|warning2}
 
@@ -1710,7 +1710,7 @@ JSDoc标签参考
         function f() {
           deprecatedVersionOfF();
         }
-    - 标明禁止工具发出的警告。警告类别用|分隔。
+    - 標明禁止工具發出的警告。警告類別用|分隔。
   * - @template
     - @template
 
@@ -1727,7 +1727,7 @@ JSDoc标签参考
         goog.bind = function(fn, thisObj, var_args) {
           ...
         };
-    - 这个注释可以用来声明一个 `模板类型名 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Template_types>`_ 。
+    - 這個註釋可以用來聲明一個 `模板類型名 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Template_types>`_ 。
   * - @this
     - @this Type
       @this {Type}
@@ -1745,7 +1745,7 @@ JSDoc标签参考
         function() {
           return this.getWrappedComponent_().getElement();
         });
-    - 标明一个特定方法在其上下文中被调用的对象类型。用于 ``this`` 关键字是从一个非原型方法中使用时
+    - 標明一個特定方法在其上下文中被調用的對象類型。用於 ``this`` 關鍵字是從一個非原型方法中使用時
   * - @type
     - @type Type
       @type {Type}
@@ -1759,7 +1759,7 @@ JSDoc标签参考
         * @type {string}
         */
         var hexId = hexId;
-    - 标识变量，属性或表达式的 `类型 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#JsTypes>`_ 。大多数类型不需要大括号，但有些项目为了保持一致性而要求所有类型都使用大括号。
+    - 標識變量，屬性或表達式的 `類型 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#JsTypes>`_ 。大多數類型不需要大括號，但有些項目為了保持一致性而要求所有類型都使用大括號。
   * - @typedef
     - @typedef
 
@@ -1773,9 +1773,9 @@ JSDoc标签参考
         goog.readNumber = function(x) {
           ...
         }
-    - 使用此注释来声明一个更 `复杂的类型 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Typedefs>`_ 的别名。
+    - 使用此註釋來聲明一個更 `複雜的類型 <http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml#Typedefs>`_ 的別名。
 
-你也许在第三方代码中看到其他类型JSDoc注释，这些注释出现在 `JSDoc Toolkit标签的参考 <https://code.google.com/p/jsdoc-toolkit/wiki/TagReference>`_ ，但目前在谷歌的代码中不鼓励使用。你应该将他们当作“保留”字，他们包括：
+你也許在第三方代碼中看到其他類型JSDoc註釋，這些註釋出現在 `JSDoc Toolkit標籤的參考 <https://code.google.com/p/jsdoc-toolkit/wiki/TagReference>`_ ，但目前在谷歌的代碼中不鼓勵使用。你應該將他們當作「保留」字，他們包括：
 
 * @augments
 
@@ -1825,20 +1825,20 @@ JSDoc标签参考
 
 * @version
 
-为goog.provide提供依赖
+為goog.provide提供依賴
 --------------------------
 
-只提供顶级符号。
+只提供頂級符號。
 
-一个类上定义的所有成员应该放在一个文件中。所以，在一个在相同类中定义的包含多个成员的文件中只应该提供顶级的类（例如枚举、内部类等）。
+一個類上定義的所有成員應該放在一個文件中。所以，在一個在相同類中定義的包含多個成員的文件中只應該提供頂級的類（例如枚舉、內部類等）。
 
-要这样写：
+要這樣寫：
 
 ::
 
     goog.provide('namespace.MyClass');
 
-不要这样写：
+不要這樣寫：
 
 ::
 
@@ -1849,7 +1849,7 @@ JSDoc标签参考
     goog.provide('namespace.MyClass.CONSTANT');
     goog.provide('namespace.MyClass.staticMethod');
 
-命名空间的成员也应该提供：
+命名空間的成員也應該提供：
 
 ::
 
@@ -1857,22 +1857,22 @@ JSDoc标签参考
     goog.provide('foo.bar.method');
     goog.provide('foo.bar.CONSTANT');
 
-编译
+編譯
 ------
 
 必需。
 
-对于所有面向客户的代码来说，使用JS编辑器是必需的，如使用 `Closure Compiler <https://developers.google.com/closure/compiler/?csw=1>`_ 。
+對於所有面向客戶的代碼來說，使用JS編輯器是必需的，如使用 `Closure Compiler <https://developers.google.com/closure/compiler/?csw=1>`_ 。
 
-技巧和诀窍
+技巧和訣竅
 --------------
 
-JavaScript帮助信息
+JavaScript幫助信息
 
-True和False布尔表达式
+True和False布爾表達式
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-下边的布尔表达式都返回false：
+下邊的布爾表達式都返回false：
 
 * null
 
@@ -1880,41 +1880,41 @@ True和False布尔表达式
 
 * ''空字符串
 
-* 数字0
+* 數字0
 
-但是要小心，因为以下这些返回true：
+但是要小心，因為以下這些返回true：
 
 * 字符串"0"
 
-* []空数组
+* []空數組
 
-* {}空对象
+* {}空對像
 
-下面这样写不好：
+下面這樣寫不好：
 
 ::
 
     while (x != null) {
 
-你可以写成这种更短的代码（只要你不期望x为0、空字符串或者false）：
+你可以寫成這種更短的代碼（只要你不期望x為0、空字符串或者false）：
 
 ::
 
     while (x) {
 
-如果你想检查字符串是否为null或空，你可以这样写：
+如果你想檢查字符串是否為null或空，你可以這樣寫：
 
 ::
 
     if (y != null && y != '') {
 
-但是以下这样会更简练更好：
+但是以下這樣會更簡練更好：
 
 ::
 
     if (y) {
 
-注意：还有很多不直观的关于布尔表达式的例子，这里是一些：
+注意：還有很多不直觀的關於布爾表達式的例子，這裡是一些：
 
 * Boolean('0') == true
   '0' != true
@@ -1939,10 +1939,10 @@ True和False布尔表达式
   {} != true
   {} != false
 
-条件（三元）操作符（？：）
+條件（三元）操作符（？：）
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-以下这种写法可以三元操作符替换：
+以下這種寫法可以三元操作符替換：
 
 ::
 
@@ -1952,13 +1952,13 @@ True和False布尔表达式
       return bar();
     }
 
-你可以这样写来代替：
+你可以這樣寫來代替：
 
 ::
 
     return val ? foo() : bar();
 
-三元操作符在生成HTML代码时也是很有用的：
+三元操作符在生成HTML代碼時也是很有用的：
 
 ::
 
@@ -1970,9 +1970,9 @@ True和False布尔表达式
 && 和 ||
 ~~~~~~~~~~~~
 
-二元布尔操作符是可短路的,，只有在必要时才会计算到最后一项。
+二元布爾操作符是可短路的,，只有在必要時才會計算到最後一項。
 
-"||" 被称作为 'default' 操作符，因为可以这样：
+"||" 被稱作為 'default' 操作符，因為可以這樣：
 
 ::
 
@@ -1987,7 +1987,7 @@ True和False布尔表达式
       // ...
     }
 
-你可以这样写：
+你可以這樣寫：
 
 ::
 
@@ -1997,7 +1997,7 @@ True和False布尔表达式
       // ...
     }
 
-"&&" 也可以用来缩减代码。例如，以下这种写法可以被缩减：
+"&&" 也可以用來縮減代碼。例如，以下這種寫法可以被縮減：
 
 ::
 
@@ -2009,7 +2009,7 @@ True和False布尔表达式
       }
     }
 
-你可以这样写：
+你可以這樣寫：
 
 ::
 
@@ -2017,7 +2017,7 @@ True和False布尔表达式
       foo(node.kids[index]);
     }
 
-或者这样写：
+或者這樣寫：
 
 ::
 
@@ -2026,16 +2026,16 @@ True和False布尔表达式
         foo(kid);
     }
 
-然而以下这样写就有点过头了：
+然而以下這樣寫就有點過頭了：
 
 ::
 
     node && node.kids && node.kids[index] && foo(node.kids[index]);
 
-遍历节点列表
+遍歷節點列表
 ~~~~~~~~~~~~~~~~
 
-节点列表是通过给节点迭代器加一个过滤器来实现的。这表示获取他的属性，如length的时间复杂度为O(n)，通过length来遍历整个列表需要O(n^2)。
+節點列表是通過給節點迭代器加一個過濾器來實現的。這表示獲取他的屬性，如length的時間複雜度為O(n)，通過length來遍歷整個列表需要O(n^2)。
 
 ::
 
@@ -2044,7 +2044,7 @@ True和False布尔表达式
       doSomething(paragraphs[i]);
     }
 
-这样写更好：
+這樣寫更好：
 
 ::
 
@@ -2053,9 +2053,9 @@ True和False布尔表达式
       doSomething(paragraph);
     }
 
-这种方法对所有的集合和数组(只要数组不包含被认为是false值的元素) 都适用。
+這種方法對所有的集合和數組(只要數組不包含被認為是false值的元素) 都適用。
 
-在上面的例子中，你也可以通过firstChild和nextSibling属性来遍历子节点。
+在上面的例子中，你也可以通過firstChild和nextSibling屬性來遍歷子節點。
 
 ::
 

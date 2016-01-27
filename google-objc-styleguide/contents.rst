@@ -1,8 +1,8 @@
-.. 请确保至少包含基本的 `toctree` 指令.
+.. 請確保至少包含基本的 `toctree` 指令.
 
 .. _objc_contents:
 
-Objective-C 风格指南 - 内容目录
+Objective-C 風格指南 - 內容目錄
 ===============================
 
 .. toctree::

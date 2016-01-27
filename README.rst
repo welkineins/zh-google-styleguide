@@ -1,36 +1,36 @@
-Google 开源项目风格指南 (中文版)
+Google 開源項目風格指南 (中文版)
 ================================
 
-* 在线文档托管在 ReadTheDocs : `在线阅读最新版本 <http://zh-google-styleguide.readthedocs.org/>`_
+* 在線文檔托管在 ReadTheDocs : `在線閱讀最新版本 <http://zh-google-styleguide.readthedocs.org/>`_
 
-* 中文风格指南 GitHub 托管地址：`zh-google-styleguide <https://github.com/zh-google-styleguide/zh-google-styleguide>`_
+* 中文風格指南 GitHub 托管地址：`zh-google-styleguide <https://github.com/zh-google-styleguide/zh-google-styleguide>`_
 
-.. note:: 声明.
+.. note:: 聲明.
 
-    本项目并非 Google 官方项目, 而是由国内程序员凭热情创建和维护.
+    本項目並非 Google 官方項目, 而是由國內程序員憑熱情創建和維護.
 
-    如果你关注的是 Google 官方英文版, 请移步 `Google Style Guide <https://github.com/google/styleguide>`_
+    如果你關注的是 Google 官方英文版, 請移步 `Google Style Guide <https://github.com/google/styleguide>`_
 
-每个较大的开源项目都有自己的风格指南: 关于如何为该项目编写代码的一系列约定 (有时候会比较武断).
-当所有代码均保持一致的风格, 在理解大型代码库时更为轻松.
+每個較大的開源項目都有自己的風格指南: 關於如何為該項目編寫代碼的一系列約定 (有時候會比較武斷).
+當所有代碼均保持一致的風格, 在理解大型代碼庫時更為輕鬆.
 
-"风格" 的含义涵盖范围广, 从 "变量使用驼峰格式 (camelCase)" 到 "决不使用全局变量" 再到 "决不使用异常".
-英文版项目维护的是在 Google 使用的编程风格指南. 如果你正在修改的项目源自 Google, 你可能会被引导至
-英文版项目页面, 以了解项目所使用的风格.
+"風格" 的含義涵蓋範圍廣, 從 "變量使用駝峰格式 (camelCase)" 到 "決不使用全局變量" 再到 "決不使用異常".
+英文版項目維護的是在 Google 使用的編程風格指南. 如果你正在修改的項目源自 Google, 你可能會被引導至
+英文版項目頁面, 以瞭解項目所使用的風格.
 
-我们已经发布了四份 **中文版** 的风格指南:
+我們已經發佈了四份 **中文版** 的風格指南:
 
-#. `Google C++ 风格指南 <http://zh-google-styleguide.readthedocs.org/en/latest/google-cpp-styleguide/>`_
+#. `Google C++ 風格指南 <http://zh-google-styleguide.readthedocs.org/en/latest/google-cpp-styleguide/>`_
 
-#. `Google Objective-C 风格指南 <http://zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/>`_
+#. `Google Objective-C 風格指南 <http://zh-google-styleguide.readthedocs.org/en/latest/google-objc-styleguide/>`_
 
-#. `Google Python 风格指南 <http://zh-google-styleguide.readthedocs.org/en/latest/google-python-styleguide/>`_
+#. `Google Python 風格指南 <http://zh-google-styleguide.readthedocs.org/en/latest/google-python-styleguide/>`_
 
-#. `Google JSON 风格指南 <https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md>`_
+#. `Google JSON 風格指南 <https://github.com/darcyliu/google-styleguide/blob/master/JSONStyleGuide.md>`_
 
 
-中文版项目采用 reStructuredText 纯文本标记语法, 并使用 Sphinx 生成 HTML / CHM / PDF 等文档格式.
+中文版項目採用 reStructuredText 純文本標記語法, 並使用 Sphinx 生成 HTML / CHM / PDF 等文檔格式.
 
-* 英文版项目还包含 `cpplint <https://github.com/google/styleguide/tree/gh-pages/cpplint>`_ - 一个用来帮助适应风格准则的工具, 以及 `google-c-style.el <https://raw.githubusercontent.com/google/styleguide/gh-pages/google-c-style.el>`_, Google 风格的 Emacs 配置文件.
+* 英文版項目還包含 `cpplint <https://github.com/google/styleguide/tree/gh-pages/cpplint>`_ - 一個用來幫助適應風格準則的工具, 以及 `google-c-style.el <https://raw.githubusercontent.com/google/styleguide/gh-pages/google-c-style.el>`_, Google 風格的 Emacs 配置文件.
 
-* 另外, 招募志愿者翻译 `JavaScript Style Guide <http://google.github.io/styleguide/javascriptguide.xml>`_ 以及 `XML Document Format Style Guide <http://google.github.io/styleguide/xmlstyle.html>`_, 有意者请联系 `Yang.Y <https://github.com/yangyubo>`_.
+* 另外, 招募志願者翻譯 `JavaScript Style Guide <http://google.github.io/styleguide/javascriptguide.xml>`_ 以及 `XML Document Format Style Guide <http://google.github.io/styleguide/xmlstyle.html>`_, 有意者請聯繫 `Yang.Y <https://github.com/yangyubo>`_.

@@ -1,66 +1,66 @@
-6. 命名约定
+6. 命名約定
 ------------------
 
-最重要的一致性规则是命名管理. 命名风格快速获知名字代表是什么东东: 类型? 变量? 函数? 常量? 宏 ... ? 甚至不需要去查找类型声明. 我们大脑中的模式匹配引擎可以非常可靠的处理这些命名规则.
+最重要的一致性規則是命名管理. 命名風格快速獲知名字代表是什麼東東: 類型? 變量? 函數? 常量? 宏 ... ? 甚至不需要去查找類型聲明. 我們大腦中的模式匹配引擎可以非常可靠的處理這些命名規則.
 
-命名规则具有一定随意性, 但相比按个人喜好命名, 一致性更重, 所以不管你怎么想, 规则总归是规则.
+命名規則具有一定隨意性, 但相比按個人喜好命名, 一致性更重, 所以不管你怎麼想, 規則總歸是規則.
 
-6.1. 通用命名规则
+6.1. 通用命名規則
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    函数命名，变量命名，文件命名要有描述性；少用缩写。
+    函數命名，變量命名，文件命名要有描述性；少用縮寫。
 
-    尽可能给有描述性的命名，别心疼空间，毕竟让代码易于新读者理解很重要。不要用只有项目开发者能理解的缩写，也不要通过砍掉几个字母来缩写单词。
+    盡可能給有描述性的命名，別心疼空間，畢竟讓代碼易於新讀者理解很重要。不要用只有項目開發者能理解的縮寫，也不要通過砍掉幾個字母來縮寫單詞。
 
     .. code-block:: c++
 
-        int price_count_reader;    // 无缩写
-        int num_errors;            // “num” 本来就很常见
-        int num_dns_connections;   // 人人都知道 “DNS” 是啥
+        int price_count_reader;    // 無縮寫
+        int num_errors;            // 「num」 本來就很常見
+        int num_dns_connections;   // 人人都知道 「DNS」 是啥
 
     .. warning::
 
         .. code-block:: c++
 
             int n;                     // 莫名其妙。
-            int nerr;                  // 怪缩写。
-            int n_comp_conns;          // 怪缩写。
-            int wgc_connections;       // 只有贵团队知道是啥意思。
-            int pc_reader;             // "pc" 有太多可能的解释了。
-            int cstmr_id;              // 有删减若干字母。
+            int nerr;                  // 怪縮寫。
+            int n_comp_conns;          // 怪縮寫。
+            int wgc_connections;       // 只有貴團隊知道是啥意思。
+            int pc_reader;             // "pc" 有太多可能的解釋了。
+            int cstmr_id;              // 有刪減若干字母。
 
 6.2. 文件命名
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    文件名要全部小写, 可以包含下划线 (``_``) 或连字符 (``-``). 按项目约定来. 如果并没有项目约定，"_" 更好。
+    文件名要全部小寫, 可以包含下劃線 (``_``) 或連字符 (``-``). 按項目約定來. 如果並沒有項目約定，"_" 更好。
 
     可接受的文件命名::
 
         * my_useful_class.cc
         * my-useful-class.cc
         * myusefulclass.cc
-        * muusefulclass_test.cc // ``_unittest`` 和 ``_regtest`` 已弃用。
+        * muusefulclass_test.cc // ``_unittest`` 和 ``_regtest`` 已棄用。
 
-    C++ 文件要以 ``.cc`` 结尾, 头文件以 ``.h`` 结尾. 专门插入文本的文件则以 ``.inc`` 结尾，参见:ref:`self-contained headers`。
+    C++ 文件要以 ``.cc`` 結尾, 頭文件以 ``.h`` 結尾. 專門插入文本的文件則以 ``.inc`` 結尾，參見:ref:`self-contained headers`。
 
-    不要使用已经存在于 ``/usr/include`` 下的文件名 (Yang.Y 注: 即编译器搜索系统头文件的路径), 如 ``db.h``.
+    不要使用已經存在於 ``/usr/include`` 下的文件名 (Yang.Y 注: 即編譯器搜索系統頭文件的路徑), 如 ``db.h``.
 
-    通常应尽量让文件名更加明确. ``http_server_logs.h`` 就比 ``logs.h`` 要好. 定义类时文件名一般成对出现, 如 ``foo_bar.h`` 和 ``foo_bar.cc``, 对应于类 ``FooBar``.
+    通常應盡量讓文件名更加明確. ``http_server_logs.h`` 就比 ``logs.h`` 要好. 定義類時文件名一般成對出現, 如 ``foo_bar.h`` 和 ``foo_bar.cc``, 對應於類 ``FooBar``.
 
-    内联函数必须放在 ``.h`` 文件中. 如果内联函数比较短, 就直接放在 ``.h`` 中.
+    內聯函數必須放在 ``.h`` 文件中. 如果內聯函數比較短, 就直接放在 ``.h`` 中.
 
-6.3. 类型命名
+6.3. 類型命名
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    类型名称的每个单词首字母均大写, 不包含下划线: ``MyExcitingClass``, ``MyExcitingEnum``.
+    類型名稱的每個單詞首字母均大寫, 不包含下劃線: ``MyExcitingClass``, ``MyExcitingEnum``.
 
-所有类型命名 —— 类, 结构体, 类型定义 (``typedef``), 枚举 —— 均使用相同约定. 例如:
+所有類型命名 —— 類, 結構體, 類型定義 (``typedef``), 枚舉 —— 均使用相同約定. 例如:
 
     .. code-block:: c++
 
@@ -75,42 +75,42 @@
         // enums
         enum UrlTableErrors { ...
 
-6.4. 变量命名
+6.4. 變量命名
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    变量名一律小写, 单词之间用下划线连接. 类的成员变量以下划线结尾, 但结构体的就不用，如:: ``a_local_variable``, ``a_struct_data_member``, ``a_class_data_member_``.
+    變量名一律小寫, 單詞之間用下劃線連接. 類的成員變量以下劃線結尾, 但結構體的就不用，如:: ``a_local_variable``, ``a_struct_data_member``, ``a_class_data_member_``.
 
-普通变量命名:
+普通變量命名:
 
-    举例::
+    舉例::
 
-        string table_name;  // 可 - 用下划线。
-        string tablename;   // 可 - 全小写。
+        string table_name;  // 可 - 用下劃線。
+        string tablename;   // 可 - 全小寫。
 
     .. warning::
         .. code-block:: c++
 
-            string tableName;   // 差 - 混合大小写。
+            string tableName;   // 差 - 混合大小寫。
 
-类数据成员：
+類數據成員：
 
-    不管是静态的还是非静态的，类数据成员都可以和普通变量一样, 但要接下划线。
+    不管是靜態的還是非靜態的，類數據成員都可以和普通變量一樣, 但要接下劃線。
 
         .. code-block:: c++
 
             class TableInfo {
               ...
              private:
-              string table_name_;  // 可 - 尾后加下划线。
+              string table_name_;  // 可 - 尾後加下劃線。
               string tablename_;   // 可。
               static Pool<TableInfo>* pool_;  // 可。
             };
 
-结构体变量:
+結構體變量:
 
-    不管是静态的还是非静态的，结构体数据成员都可以和普通变量一样, 不用像类那样接下划线:
+    不管是靜態的還是非靜態的，結構體數據成員都可以和普通變量一樣, 不用像類那樣接下劃線:
 
         .. code-block:: c++
 
@@ -119,11 +119,11 @@
                 int num_entries;
             }
 
-    结构体与类的讨论参考 :ref:`结构体 vs. 类 <structs_vs_classes>` 一节.
+    結構體與類的討論參考 :ref:`結構體 vs. 類 <structs_vs_classes>` 一節.
 
-全局变量:
+全局變量:
 
-    对全局变量没有特别要求, 少用就好, 但如果你要用, 可以用 ``g_`` 或其它标志作为前缀, 以便更好的区分局部变量.
+    對全局變量沒有特別要求, 少用就好, 但如果你要用, 可以用 ``g_`` 或其它標誌作為前綴, 以便更好的區分局部變量.
 
 .. _constant-names:
 
@@ -132,30 +132,30 @@
 
 .. tip::
 
-    在全局或类里的常量名称前加 ``k``: kDaysInAWeek. 且除去开头的 ``k`` 之外每个单词开头字母均大写。
+    在全局或類裡的常量名稱前加 ``k``: kDaysInAWeek. 且除去開頭的 ``k`` 之外每個單詞開頭字母均大寫。
 
-    所有编译时常量, 无论是局部的, 全局的还是类中的, 和其他变量稍微区别一下. ``k`` 后接大写字母开头的单词:
+    所有編譯時常量, 無論是局部的, 全局的還是類中的, 和其他變量稍微區別一下. ``k`` 後接大寫字母開頭的單詞:
 
         .. code-block:: c++
 
             const int kDaysInAWeek = 7;
 
-    这规则适用于编译时的局部作用域常量，不过要按变量规则来命名也可以。
+    這規則適用於編譯時的局部作用域常量，不過要按變量規則來命名也可以。
 
 .. _function-names:
 
-6.6. 函数命名
+6.6. 函數命名
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    常规函数使用大小写混合, 取值和设值函数则要求与变量名匹配: ``MyExcitingFunction()``, ``MyExcitingMethod()``, ``my_exciting_member_variable()``, ``set_my_exciting_member_variable()``.
+    常規函數使用大小寫混合, 取值和設值函數則要求與變量名匹配: ``MyExcitingFunction()``, ``MyExcitingMethod()``, ``my_exciting_member_variable()``, ``set_my_exciting_member_variable()``.
 
-常规函数:
+常規函數:
 
-    函数名的每个单词首字母大写, 没有下划线。
+    函數名的每個單詞首字母大寫, 沒有下劃線。
 
-    如果您的某函数出错时就要直接 crash, 那么就在函数名加上 OrDie. 但这函数本身必须集成在产品代码里，且平时也可能会出错。
+    如果您的某函數出錯時就要直接 crash, 那麼就在函數名加上 OrDie. 但這函數本身必須集成在產品代碼裡，且平時也可能會出錯。
 
         .. code-block:: c++
 
@@ -163,9 +163,9 @@
             DeleteUrl()
             OpenFileOrDie()
 
-取值和设值函数:
+取值和設值函數:
 
-    取值（Accessors）和设值（Mutators）函数要与存取的变量名匹配. 这儿摘录一个类, ``num_entries_`` 是该类的实例变量:
+    取值（Accessors）和設值（Mutators）函數要與存取的變量名匹配. 這兒摘錄一個類, ``num_entries_`` 是該類的實例變量:
 
         .. code-block:: c++
 
@@ -179,25 +179,25 @@
                     int num_entries_;
             };
 
-    其它非常短小的内联函数名也可以用小写字母, 例如. 如果你在循环中调用这样的函数甚至都不用缓存其返回值, 小写命名就可以接受.
+    其它非常短小的內聯函數名也可以用小寫字母, 例如. 如果你在循環中調用這樣的函數甚至都不用緩存其返回值, 小寫命名就可以接受.
 
-6.7. 名字空间命名
+6.7. 名字空間命名
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    名字空间用小写字母命名, 并基于项目名称和目录结构: ``google_awesome_project``.
+    名字空間用小寫字母命名, 並基於項目名稱和目錄結構: ``google_awesome_project``.
 
-关于名字空间的讨论和如何命名, 参考 :ref:`名字空间 <namespaces>` 一节.
+關於名字空間的討論和如何命名, 參考 :ref:`名字空間 <namespaces>` 一節.
 
-6.8. 枚举命名
+6.8. 枚舉命名
 ~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    枚举的命名应当和 :ref:`常量 <constant-names>` 或 :ref:`宏 <macro-names>` 一致: ``kEnumName`` 或是 ``ENUM_NAME``.
+    枚舉的命名應當和 :ref:`常量 <constant-names>` 或 :ref:`宏 <macro-names>` 一致: ``kEnumName`` 或是 ``ENUM_NAME``.
 
-单独的枚举值应该优先采用 :ref:`常量 <constant-names>` 的命名方式. 但 :ref:`宏 <macro-names>` 方式的命名也可以接受. 枚举名 ``UrlTableErrors`` (以及 ``AlternateUrlTableErrors``) 是类型, 所以要用大小写混合的方式.
+單獨的枚舉值應該優先採用 :ref:`常量 <constant-names>` 的命名方式. 但 :ref:`宏 <macro-names>` 方式的命名也可以接受. 枚舉名 ``UrlTableErrors`` (以及 ``AlternateUrlTableErrors``) 是類型, 所以要用大小寫混合的方式.
     .. code-block:: c++
 
         enum UrlTableErrors {
@@ -211,7 +211,7 @@
             MALFORMED_INPUT = 2,
         };
 
-2009 年 1 月之前, 我们一直建议采用 :ref:`宏 <macro-names>` 的方式命名枚举值. 由于枚举值和宏之间的命名冲突, 直接导致了很多问题. 由此, 这里改为优先选择常量风格的命名方式. 新代码应该尽可能优先使用常量风格. 但是老代码没必要切换到常量风格, 除非宏风格确实会产生编译期问题.
+2009 年 1 月之前, 我們一直建議採用 :ref:`宏 <macro-names>` 的方式命名枚舉值. 由於枚舉值和宏之間的命名衝突, 直接導致了很多問題. 由此, 這裡改為優先選擇常量風格的命名方式. 新代碼應該盡可能優先使用常量風格. 但是老代碼沒必要切換到常量風格, 除非宏風格確實會產生編譯期問題.
 
 .. _macro-names:
 
@@ -220,23 +220,23 @@
 
 .. tip::
 
-    你并不打算:ref:`使用宏 <preprocessor-macros>`, 对吧? 如果你一定要用, 像这样命名: ``MY_MACRO_THAT_SCARES_SMALL_CHILDREN``.
+    你並不打算:ref:`使用宏 <preprocessor-macros>`, 對吧? 如果你一定要用, 像這樣命名: ``MY_MACRO_THAT_SCARES_SMALL_CHILDREN``.
 
-参考:ref:`预处理宏 <preprocessor-macros>`; 通常 *不应该* 使用宏. 如果不得不用, 其命名像枚举命名一样全部大写, 使用下划线::
+參考:ref:`預處理宏 <preprocessor-macros>`; 通常 *不應該* 使用宏. 如果不得不用, 其命名像枚舉命名一樣全部大寫, 使用下劃線::
 
     #define ROUND(x) ...
     #define PI_ROUNDED 3.0
 
-6.10. 命名规则的特例
+6.10. 命名規則的特例
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    如果你命名的实体与已有 C/C++ 实体相似, 可参考现有命名策略.
+    如果你命名的實體與已有 C/C++ 實體相似, 可參考現有命名策略.
 
 ``bigopen()``:
 
-    函数名, 参照 ``open()`` 的形式
+    函數名, 參照 ``open()`` 的形式
 
 ``uint``:
 
@@ -244,17 +244,17 @@
 
 ``bigpos``:
 
-    ``struct`` 或 ``class``, 参照 ``pos`` 的形式
+    ``struct`` 或 ``class``, 參照 ``pos`` 的形式
 
 ``sparse_hash_map``:
 
-    STL 相似实体; 参照 STL 命名约定
+    STL 相似實體; 參照 STL 命名約定
 
 ``LONGLONG_MAX``:
 
     常量, 如同 ``INT_MAX``
 
-译者（acgtyrant）笔记
+譯者（acgtyrant）筆記
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. 感觉 Google 的命名约定很高明，比如写了简单的类 QueryResult, 接着又可以直接定义一个变量 query_result, 区分度很好；再次，类内变量以下划线结尾，那么就可以直接传入同名的形参，比如 TextQuery::TextQuery(std::string word) : word_(word) {}, 其中 ``word_`` 自然是类内私有成员。
+#. 感覺 Google 的命名約定很高明，比如寫了簡單的類 QueryResult, 接著又可以直接定義一個變量 query_result, 區分度很好；再次，類內變量以下劃線結尾，那麼就可以直接傳入同名的形參，比如 TextQuery::TextQuery(std::string word) : word_(word) {}, 其中 ``word_`` 自然是類內私有成員。
