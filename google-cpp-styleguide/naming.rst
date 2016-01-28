@@ -1,7 +1,7 @@
 6. 命名約定
 ------------------
 
-最重要的一致性規則是命名管理. 命名風格快速獲知名字代表是什麼東東: 類型? 變數? 函數? 常數? 宏 ... ? 甚至不需要去查找類型聲明. 我們大腦中的模式匹配引擎可以非常可靠的處理這些命名規則.
+最重要的一致性規則是命名管理. 命名風格快速獲知名字代表是什麼東東: 類型? 變數? 函數? 常數? 巨集 ... ? 甚至不需要去查找類型聲明. 我們大腦中的模式匹配引擎可以非常可靠的處理這些命名規則.
 
 命名規則具有一定隨意性, 但相比按個人喜好命名, 一致性更重, 所以不管你怎麼想, 規則總歸是規則.
 
@@ -36,7 +36,7 @@
 
 .. tip::
 
-    文件名要全部小寫, 可以包含下劃線 (``_``) 或連字符 (``-``). 按專案約定來. 如果並沒有項目約定，"_" 更好。
+    文件名要全部小寫, 可以包含底線 (``_``) 或連字符 (``-``). 按專案約定來. 如果並沒有項目約定，"_" 更好。
 
     可接受的文件命名::
 
@@ -58,7 +58,7 @@
 
 .. tip::
 
-    類型名稱的每個單詞首字母均大寫, 不包含下劃線: ``MyExcitingClass``, ``MyExcitingEnum``.
+    類型名稱的每個單詞首字母均大寫, 不包含底線: ``MyExcitingClass``, ``MyExcitingEnum``.
 
 所有類型命名 —— 類, 結構體, 類型定義 (``typedef``), 枚舉 —— 均使用相同約定. 例如:
 
@@ -80,13 +80,13 @@
 
 .. tip::
 
-    變數名一律小寫, 單詞之間用下劃線連接. 類的成員變量以下劃線結尾, 但結構體的就不用，如:: ``a_local_variable``, ``a_struct_data_member``, ``a_class_data_member_``.
+    變數名一律小寫, 單詞之間用底線連接. 類的成員變量以下劃線結尾, 但結構體的就不用，如:: ``a_local_variable``, ``a_struct_data_member``, ``a_class_data_member_``.
 
 普通變數命名:
 
     舉例::
 
-        string table_name;  // 可 - 用下劃線。
+        string table_name;  // 可 - 用底線。
         string tablename;   // 可 - 全小寫。
 
     .. warning::
@@ -96,21 +96,21 @@
 
 類數據成員：
 
-    不管是靜態的還是非靜態的，類數據成員都可以和普通變數一樣, 但要接下劃線。
+    不管是靜態的還是非靜態的，類數據成員都可以和普通變數一樣, 但要接底線。
 
         .. code-block:: c++
 
             class TableInfo {
               ...
              private:
-              string table_name_;  // 可 - 尾後加下劃線。
+              string table_name_;  // 可 - 尾後加底線。
               string tablename_;   // 可。
               static Pool<TableInfo>* pool_;  // 可。
             };
 
 結構體變數:
 
-    不管是靜態的還是非靜態的，結構體數據成員都可以和普通變數一樣, 不用像類那樣接下劃線:
+    不管是靜態的還是非靜態的，結構體數據成員都可以和普通變數一樣, 不用像類那樣接底線:
 
         .. code-block:: c++
 
@@ -153,7 +153,7 @@
 
 常規函數:
 
-    函數名的每個單詞首字母大寫, 沒有下劃線。
+    函數名的每個單詞首字母大寫, 沒有底線。
 
     如果您的某函數出錯時就要直接 crash, 那麼就在函數名加上 OrDie. 但這函數本身必須集成在產品程式碼裡，且平時也可能會出錯。
 
@@ -195,9 +195,9 @@
 
 .. tip::
 
-    枚舉的命名應當和 :ref:`常數 <constant-names>` 或 :ref:`宏 <macro-names>` 一致: ``kEnumName`` 或是 ``ENUM_NAME``.
+    枚舉的命名應當和 :ref:`常數 <constant-names>` 或 :ref:`巨集 <macro-names>` 一致: ``kEnumName`` 或是 ``ENUM_NAME``.
 
-單獨的枚舉值應該優先採用 :ref:`常數 <constant-names>` 的命名方式. 但 :ref:`宏 <macro-names>` 方式的命名也可以接受. 枚舉名 ``UrlTableErrors`` (以及 ``AlternateUrlTableErrors``) 是類型, 所以要用大小寫混合的方式.
+單獨的枚舉值應該優先採用 :ref:`常數 <constant-names>` 的命名方式. 但 :ref:`巨集 <macro-names>` 方式的命名也可以接受. 枚舉名 ``UrlTableErrors`` (以及 ``AlternateUrlTableErrors``) 是類型, 所以要用大小寫混合的方式.
     .. code-block:: c++
 
         enum UrlTableErrors {
@@ -211,18 +211,18 @@
             MALFORMED_INPUT = 2,
         };
 
-2009 年 1 月之前, 我們一直建議採用 :ref:`宏 <macro-names>` 的方式命名枚舉值. 由於枚舉值和宏之間的命名衝突, 直接導致了很多問題. 由此, 這裡改為優先選擇常數風格的命名方式. 新程式碼應該盡可能優先使用常量風格. 但是老代碼沒必要切換到常量風格, 除非宏風格確實會產生編譯期問題.
+2009 年 1 月之前, 我們一直建議採用 :ref:`巨集 <macro-names>` 的方式命名枚舉值. 由於枚舉值和宏之間的命名衝突, 直接導致了很多問題. 由此, 這裡改為優先選擇常數風格的命名方式. 新程式碼應該盡可能優先使用常量風格. 但是老代碼沒必要切換到常量風格, 除非宏風格確實會產生編譯期問題.
 
 .. _macro-names:
 
-6.9. 宏命名
+6.9. 巨集命名
 ~~~~~~~~~~~~~~~~~~
 
 .. tip::
 
-    你並不打算:ref:`使用宏 <preprocessor-macros>`, 對吧? 如果你一定要用, 像這樣命名: ``MY_MACRO_THAT_SCARES_SMALL_CHILDREN``.
+    你並不打算:ref:`使用巨集 <preprocessor-macros>`, 對吧? 如果你一定要用, 像這樣命名: ``MY_MACRO_THAT_SCARES_SMALL_CHILDREN``.
 
-參考:ref:`預處理宏 <preprocessor-macros>`; 通常 *不應該* 使用宏. 如果不得不用, 其命名像枚舉命名一樣全部大寫, 使用下劃線::
+參考:ref:`前處理巨集 <preprocessor-macros>`; 通常 *不應該* 使用宏. 如果不得不用, 其命名像枚舉命名一樣全部大寫, 使用底線::
 
     #define ROUND(x) ...
     #define PI_ROUNDED 3.0
@@ -257,4 +257,4 @@
 譯者（acgtyrant）筆記
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. 感覺 Google 的命名約定很高明，比如寫了簡單的類 QueryResult, 接著又可以直接定義一個變數 query_result, 區分度很好；再次，類內變量以下劃線結尾，那麼就可以直接傳入同名的形參，比如 TextQuery::TextQuery(std::string word) : word_(word) {}, 其中 ``word_`` 自然是類內私有成員。
+#. 感覺 Google 的命名約定很高明，比如寫了簡單的類 QueryResult, 接著又可以直接定義一個變數 query_result, 區分度很好；再次，類內變量以底線結尾，那麼就可以直接傳入同名的形參，比如 TextQuery::TextQuery(std::string word) : word_(word) {}, 其中 ``word_`` 自然是類內私有成員。

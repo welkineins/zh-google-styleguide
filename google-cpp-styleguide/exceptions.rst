@@ -31,15 +31,15 @@
 
     - 不要使用 ``#pragma once``; 而應該使用 Google 的標頭檔保護規則. 標頭檔保護的路徑應該相對於專案根目錄 (Yang.Y 注: 如 ``#ifndef SRC_DIR_BAR_H_``, 參考 :ref:`#define 保護 <define_guard>` 一節).
 
-    - 除非萬不得已, 不要使用任何非標準的擴展, 如 ``#pragma`` 和 ``__declspec``. 允許使用 ``__declspec(dllimport)`` 和 ``__declspec(dllexport)``; 但你必須通過宏來使用, 比如 ``DLLIMPORT`` 和 ``DLLEXPORT``, 這樣其他人在分享使用這些程式碼時很容易就去掉這些擴展.
+    - 除非萬不得已, 不要使用任何非標準的擴展, 如 ``#pragma`` 和 ``__declspec``. 允許使用 ``__declspec(dllimport)`` 和 ``__declspec(dllexport)``; 但你必須通過巨集來使用, 比如 ``DLLIMPORT`` 和 ``DLLEXPORT``, 這樣其他人在分享使用這些程式碼時很容易就去掉這些擴展.
 
 在 Windows 上, 只有很少的一些情況下, 我們可以偶爾違反規則:
 
     - 通常我們 :ref:`禁止使用多重繼承 <multiple-inheritance>`, 但在使用 COM 和 ATL/WTL 類時可以使用多重繼承. 為了實現 COM 或 ATL/WTL 類/介面, 你可能不得不使用多重實現繼承.
 
-    - 雖然程式碼中不應該使用異常, 但是在 ATL 和部分 STL（包括 Visual C++ 的 STL) 中異常被廣泛使用. 使用 ATL 時, 應定義 ``_ATL_NO_EXCEPTIONS`` 以禁用異常. 你要研究一下是否能夠禁用 STL 的異常, 如果無法禁用, 啟用編譯器異常也可以. (注意這只是為了編譯 STL, 自己代碼裡仍然不要含異常處理.)
+    - 雖然程式碼中不應該使用例外, 但是在 ATL 和部分 STL（包括 Visual C++ 的 STL) 中異常被廣泛使用. 使用 ATL 時, 應定義 ``_ATL_NO_EXCEPTIONS`` 以禁用異常. 你要研究一下是否能夠禁用 STL 的異常, 如果無法禁用, 啟用編譯器異常也可以. (注意這只是為了編譯 STL, 自己代碼裡仍然不要含異常處理.)
 
     - 通常為了利用標頭檔預編譯, 每個每個源文件的開頭都會包含一個名為 ``StdAfx.h`` 或 ``precompile.h`` 的文件. 為了使程式碼方便與其他專案共享, 避免顯式包含此文件 (``precompile.cc``), 使用 ``/FI`` 編譯器選項以自動包含.
 
-    - 資源標頭檔通常命名為 ``resource.h``, 且只包含宏的, 不需要遵守本風格指南.
+    - 資源標頭檔通常命名為 ``resource.h``, 且只包含巨集的, 不需要遵守本風格指南.
 
