@@ -46,31 +46,33 @@
 
     根據下文將要提到的策略合理使用命名空間。記得在命名空間的結尾使用註解進行標示，例如下一節的範例程式一樣。
 
-2.1.1. 匿名命名空間
+2.1.1. 匿名命名空間 (Unnamed Namespaces)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-- 在 ``.cc`` 文件中, 允許甚至鼓勵使用匿名命名空間, 以避免運行時的命名衝突:
+- 在 ``.cc`` 文件中, 可以使用匿名命名空間，甚至鼓勵使用來避免連結時期 (link time) 的命名衝突：
 
     .. code-block:: c++
 
         namespace {                             // .cc 文件中
 
         // 命名空間的內容無需縮進
-        enum { kUNUSED, kEOF, kERROR };         // 經常使用的符號
-        bool AtEof() { return pos_ == kEOF; }   // 使用本命名空間內的符號 EOF
+        
+        // 此函數產生出來的 symbol 保證不會和連結時期的其他 symbol 相撞。且此 symbol
+        // 只能在這個 .cc 文件中被看到。
+        bool UpdateInternals(Frobber* f, int newval) {
+          ...
+        }
 
         } // namespace
 
-然而, 與特定類關聯的文件作用域宣告在該類中被聲明為類型, 靜態數據成員或靜態成員函數, 而不是匿名命名空間的成員. 如上例所示, 匿名空間結束時用註解 ``// namespace`` 標識.
-
-- 不要在 ``.h`` 文件中使用匿名命名空間.
+- 不要在 ``.h`` 文件中使用匿名命名空間。
 
 2.1.2. 具名的命名空間
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-具名的命名空間使用方式如下:
+具名的命名空間使用方式如下：
 
-    - 用命名空間把文件包含, `gflags <http://code.google.com/p/google-gflags/>`_ 的宣告/定義, 以及類的前置聲明以外的整個源文件封裝起來, 以區別於其它名字空間:
+    - 在 ``include``、`gflags <http://code.google.com/p/google-gflags/>`_ 的宣告/定義, 以及類別的前置聲明後，把整個原始碼文件剩下部分放置在命名空間內，以區別於其它命名空間：
 
         .. code-block:: c++
 
@@ -99,63 +101,51 @@
 
             } // namespace mynamespace
 
-        通常的 ``.cc`` 文件包含更多, 更複雜的細節, 比如引用其他命名空間的類等.
+        通常的 ``.cc`` 文件包含更多，更複雜的細節，例如 flags 或 using-declarations。
 
         .. code-block:: c++
 
-            #include 「a.h」
+            #include "a.h"
 
-            DEFINE_bool(someflag, false, 「dummy flag」);
-
-            class C;                    // 全域命名空間中類 C 的前置宣告
-            namespace a { class A; }    // a::A 的前置宣告
-
-            namespace b {
-
-            …code for b…                // b 中的程式碼
-
-            } // namespace b
-
-
-    - 不要在命名空間 ``std`` 內宣告任何東西, 包括標準庫的類前置聲明. 在 ``std`` 名字空間聲明實體會導致不確定的問題, 比如不可移植. 聲明標準庫下的實體, 需要包含對應的標頭檔.
-
-    - 最好不要使用 using 指示，以保證命名空間下的所有名稱都可以正常使用.
-
-        .. code-block:: c++
-
-            // 禁止 —— 污染命名空間
-            using namespace foo;
-
-    - 在 ``.cc`` 文件, ``.h`` 文件的函數, 方法或類中, 可以使用 using 宣告。
-
-        .. code-block:: c++
-
-            // 允許: .cc 文件中
-            // .h 文件的話, 必須在函數, 方法或類的內部使用
+            DEFINE_bool(someflag, false, "dummy flag");
+            
             using ::foo::bar;
 
-    - 在 ``.cc`` 文件, ``.h`` 文件的函數, 方法或類中, 允許使用命名空間別名.
+            namespace a {
+
+            …code for a…
+
+            } // namespace a
+
+
+    - 不要在命名空間 ``std`` 內宣告任何東西，包括標準庫的類別前置聲明。在 ``std`` 命名空間宣告實體 (entities) 會導致不確定行為 (undefined behavior)。比如不可移植。要宣告標準函式庫內的實體，直接 ``include ``對應的標頭檔。
+
+    - 最好不要使用 using-directive 來導出一個命名空間下的所有名稱。
 
         .. code-block:: c++
 
-            // 允許: .cc 文件中
-            // .h 文件的話, 必須在函數, 方法或類的內部使用
+            // 禁止 —— 這會污染命名空間
+            using namespace foo;
+    
+    - 不要在標頭檔中的一個命名空間的作用域內使用命名空間別名 (Namespace aliases)，除非該命名空間僅限於內部使用 (internal-only)。因為此操作會導致這些外部引入的東西變成此標頭檔公開的 API 的一部份。
+    
+        .. code-block:: c++
 
+            // 在 .cc 文件裡可以用來縮短常使用的名稱
             namespace fbz = ::foo::bar::baz;
 
-            // 在 .h 文件裡
+            // 在 .h 文件裡可以用來縮短常使用的名稱
             namespace librarian {
-            //以下別名在所有包含了該標頭檔的文件中生效。
-            namespace pd_s = ::pipeline_diagnostics::sidetable;
+            namespace impl { // 內部使用，不公開於 API
+            namespace sidetable = ::pipeline_diagnostics::sidetable;
+            } // namespace impl
 
             inline void my_inline_function() {
-              // namespace alias local to a function (or method).
+              // 命名空間別名到一個函數或方法
               namespace fbz = ::foo::bar::baz;
               ...
             }
             }  // namespace librarian
-
-        注意在 .h 文件的別名對包含了該標頭檔的所有人可見，所以在公共標頭檔（在專案外可用）以及它們遞迴包含的其它標頭檔裡，不要用別名。畢竟原則上公共 API 要盡可能地精簡。
 
     - 禁止用內聯命名空間
 
