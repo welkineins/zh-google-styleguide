@@ -35,7 +35,7 @@
 
 在 Windows 上, 只有很少的一些情況下, 我們可以偶爾違反規則:
 
-    - 通常我們 :ref:`禁止使用多重繼承 <multiple-inheritance>`, 但在使用 COM 和 ATL/WTL 類時可以使用多重繼承. 為了實現 COM 或 ATL/WTL 類/介面, 你可能不得不使用多重實現繼承.
+    - 通常我們 :ref:`禁止使用多重繼承 <multiple-inheritance>`, 但在使用 COM 和 ATL/WTL 類時可以使用多重繼承. 為了實作 COM 或 ATL/WTL 類/介面, 你可能不得不使用多重實作繼承.
 
     - 雖然程式碼中不應該使用例外, 但是在 ATL 和部分 STL（包括 Visual C++ 的 STL) 中異常被廣泛使用. 使用 ATL 時, 應定義 ``_ATL_NO_EXCEPTIONS`` 以禁用異常. 你要研究一下是否能夠禁用 STL 的異常, 如果無法禁用, 啟用編譯器異常也可以. (注意這只是為了編譯 STL, 自己程式碼裡仍然不要含異常處理.)
 
