@@ -420,7 +420,7 @@ Lambda函數
 
                  def ___set_area(self, area):
                      """Indirect setter for 'area' property."""
-                     self._SetArea(area)
+                     self.__set_area(area)
 
                  area = property(___get_area, ___set_area,
                                  doc="""Gets or sets the area of the square.""")
