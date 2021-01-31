@@ -73,20 +73,19 @@
 	* 前置宣告可能在函式庫進行可向下相容的 API 改動時發生編譯錯誤。例如函式庫開發者放寬了某個參數類型、替樣板增加預設參數或更改命名空間等等。
 	* 前置宣告來自 ``std::`` 命名空間的 symbols 會導致未定義行為 (undefined behavior)。
 	* 難以抉擇是要使用前置宣告或是引入完整的標頭檔。在某些狀況下，使用前置宣告替換掉 ``#include`` 可能意外的修改了程式碼的意圖。
-    
-	.. code-block:: c++
-
-        // b.h:
-        struct B {};
-        struct D : B {};
+	    .. code-block:: c++
         
-        // good_user.cc:
-        #include "b.h"
-        void f(B*);
-        void f(void*);
-        void test(D* x) { f(x); }  // calls f(B*)
+            // b.h:
+            struct B {};
+            struct D : B {};
+            
+            // good_user.cc:
+            #include "b.h"
+            void f(B*);
+            void f(void*);
+            void test(D* x) { f(x); }  // calls f(B*)
+        若 ``#include`` 被替換成 B 和 D 的前置宣告 ``test()`` 會呼叫到 ``f(void*)``。
 
-	若 ``#include`` 被替換成 B 和 D 的前置宣告 ``test()`` 會呼叫到 ``f(void*)``。
 	* 使用前置宣告多個 symbols 可能暴露了比直接引入標頭檔更多的訊息。
 	* 為了使用前置宣告而修改程式碼（例如：使用指標成員而不是物件成員) 可能會導致程式運作較為緩慢或是更加的複雜。
 
